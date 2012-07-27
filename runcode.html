@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Code Box</title>
+<style type="text/css">
+.box{width:800px;height:550px;margin:0 auto;margin-top:20px;}
+textarea{height:520px;width:780px;border:1px solid #ccaaff;padding:3px;font-family:Verdana;font-size:13px;line-height:16px;}
+</style>
+<script type="text/javascript">
+
+/**
+*运行代码
+*/
+function runCode(obj)  {
+	if (!obj) return false;
+	var code=document.getElementById(obj).value;
+	if(code!=""){
+		var win=window.open('','_blank','');
+		win.opener = null;
+		win.document.write(code);  
+		win.document.close();
+	}
+}
+
+</script>
+</head>
+<body>
+
+<div class="box">
+<input onclick="runCode('code')" type="button" value="运行代码" />
+<textarea id="code">
+&lt;html&gt;
+&lt;body&gt;
+&lt;h1&gt;Run Code&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</textarea>
+
+</div><!--box end-->
+
+</body>
+</html>

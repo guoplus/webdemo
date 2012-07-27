@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>IE6 bug hack</title>
+</head>
+<body>
+<style type="text/css">
+*{margin:0;padding:0;}
+
+* html body{overflow-x:auto;overflow-y:hidden;height:100%;}
+* html{height:100%;overflow-x:auto;overflow-y:hidden;}
+* html .fbox{overflow:auto;height:100%;position:relative;}
+
+#fixedbox{width:200px;height:150px;border:1px solid #666;background:#F8FFDD;position:fixed;_position:absolute;top:30px;left:30px;}
+#fixedbox p{margin:10px;}
+.box{margin:20px;}
+.ot{width:150px;height:200px;border:1px solid #666;background:#F8FFDD;position:relative;top:15px;left:15px;}
+.ots{width:60px;height:70px;border:1px solid #666;background:#EBCCFF;position:absolute;bottom:30px;right:30px;}
+</style>
+
+
+<div id="fixedbox">
+<p>这是个fixed元素#fixedbox</p>
+</div>
+
+<div style="height:300px;width:400px;"></div>
+
+<div class="fbox">
+
+<div class="box">
+<pre>
+/* 修正IE6振动bug */
+*,* html body{background-image:url(about:blank);background-attachment:fixed;}
+/* IE6 头部固定 */
+* html .fixed-top{position:absolute;bottom:auto;top:expression(eval(document.documentElement.scrollTop));}
+/* IE6 右侧固定 */
+* html .fixed-right{position:absolute;right:auto;left:expression(eval(document.documentElement.scrollLeft+document.documentElement.clientWidth-this.offsetWidth)-(parseInt(this.currentStyle.marginLeft,10)||0)-(parseInt(this.currentStyle.marginRight,10)||0));}
+/* IE6 底部固定 */
+* html .fixed-bottom{position:absolute;bottom:auto;top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));}
+/* IE6 左侧固定 */
+* html .fixed-left{position:absolute;right:auto;left:expression(eval(document.documentElement.scrollLeft));}
+</pre>
+</div>
+
+<div class="box">
+<div class="ot">
+  <p>这是个relative元素.ot</p>
+  <div class="ots"><p>这是个absolute元素.ots</p></div>
+</div>
+</div><!--box end-->
+
+</div>
+
+
+</body>
+</html>

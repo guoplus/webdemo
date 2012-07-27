@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>图片幻灯</title>
+<style type="text/css">
+.sbox{width:680px;height:auto;margin:0 auto;}
+.sbox .con{margin:10px;_margin:5px;float:left;width:320px;height:220px;border:0;}
+
+.box{width:800px;height:550px;margin:0 auto;margin-top:20px;}
+textarea{height:520px;width:780px;border:1px solid #ccaaff;padding:3px;font-family:Verdana;font-size:13px;line-height:16px;}
+</style>
+<script src="js/addLoadEvent.js" type="text/javascript" ></script>
+</head>
+<body>
+
+<div class="sbox">
+<div class="con">
+<script type="text/javascript">
+var interval_time=5;
+var focus_width=300;
+var focus_height=200;
+var text_height=20;
+var text_mtop=1;
+var text_mleft=10;
+var textmargin=text_mtop+"|"+text_mleft;
+var textcolor="#000000|0xFF0000";
+var text_size=12;
+var text_align='left';
+var swf_height=focus_height+text_height+text_mtop;
+var borderStyle="1|0x000000|0";
+
+var pics='pic-slideshow/pic0.jpg|pic-slideshow/pic1.jpg|pic-slideshow/pic0.jpg|pic-slideshow/pic1.jpg';
+var links='#a|#a|#a|#a'; 
+var texts='春天来了|小草绿了|花儿开了|虫儿都醒来了';
+
+document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ focus_width +'" height="'+ swf_height +'">');
+document.write('<param name="allowScriptAccess" value="sameDomain"><param name="movie" value="pic-slideshow/s1.swf"> <param name="quality" value="high"><param name="Wmode" value="transparent">');
+document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+document.write('<param name="FlashVars" value="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'&textmargin='+textmargin+'&textcolor='+textcolor+'&borderstyle='+borderStyle+'&text_align='+text_align+'&interval_time='+interval_time+'&textsize='+text_size+'">');
+document.write('<embed src="pic-slideshow/s1.swf" wmode="opaque" FlashVars="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'&textmargin='+textmargin+'&textcolor='+textcolor+'&borderstyle='+borderStyle+'&text_align='+text_align+'&interval_time='+interval_time+'&textsize='+text_size+'" menu="false" bgcolor="#ffffff" quality="high" width="'+ focus_width +'" height="'+ swf_height +'" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />');  document.write('</object>');
+</script>
+</div>
+</div>
+
+<div class="sbox">
+<div class="con">
+<script type="text/javascript">
+var focus_width=300;
+var focus_height=200;
+var text_height=20;
+var swf_height = focus_height+text_height;
+var pics='pic-slideshow/pic0.jpg|pic-slideshow/pic1.jpg|pic-slideshow/pic0.jpg|pic-slideshow/pic1.jpg';
+var links='#a|#a|#a|#a'; 
+var texts='春天来了|小草绿了|花儿开了|虫儿都醒来了';
+
+document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ focus_width +'" height="'+ swf_height +'">');
+document.write('<param name="allowScriptAccess" value="sameDomain"><param name="movie" value="pic-slideshow/s2.swf"><param name="quality" value="high"><param name="bgcolor" value="#ffffff">');
+document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+document.write('<param name="FlashVars" value="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'">');
+document.write('<embed src="pic-slideshow/s2.swf" wmode="opaque" FlashVars="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'" menu="false" bgcolor="#ffffff" quality="high" width="'+ focus_width +'" height="'+ swf_height +'" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />');
+document.write('</object>');
+</script>
+</div>
+</div>
+
+<div class="sbox">
+<div class="con">
+<script type="text/javascript">
+var focus_width=300;
+var focus_height=200;
+var text_height=20;
+var swf_height = focus_height+text_height;
+var pics='pic-slideshow/pic0.jpg|pic-slideshow/pic1.jpg|pic-slideshow/pic0.jpg|pic-slideshow/pic1.jpg';
+var links='#a|#a|#a|#a'; 
+var texts='春天来了|小草绿了|花儿开了|虫儿都醒来了';
+
+document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ focus_width +'" height="'+ swf_height +'">');
+document.write('<param name="allowScriptAccess" value="sameDomain"><param name="movie" value="pic-slideshow/s3.swf"><param name="quality" value="high"><param name="bgcolor" value="#ffffff">');
+document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+document.write('<param name="FlashVars" value="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'">');
+document.write('<embed src="pic-slideshow/s3.swf" wmode="opaque" FlashVars="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'" menu="false" bgcolor="#ffffff" quality="high" width="'+ focus_width +'" height="'+ swf_height +'" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />');
+document.write('</object>');
+</script>
+</div>
+</div>
+
+</body>
+</html>

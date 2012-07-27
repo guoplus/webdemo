@@ -1,0 +1,521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>下拉菜单</title>
+<link href="css/lib.css" rel="stylesheet" type="text/css" />
+<script src="js/addLoadEvent.js" type="text/javascript" ></script>
+</head>
+
+<body>
+
+<style type="text/css">
+.nav{width:800px;margin:0 auto;margin-top:20px;font-family:Verdana;font-size:13px;z-index:50;}
+.nav ul{list-style-type:none;}
+.nav li{float:left;height:30px;display:inline;position:relative;}
+.nav li a{
+    color:#fff;
+    text-decoration: none;
+    line-height: 29px;
+    width:120px;
+    padding-left:9px;
+    display:block;
+    border-right:solid 1px #ccc;
+    border-bottom:solid 1px #ccc;
+    background: #808080;
+}
+.nav li a:hover{background:#666;}
+
+.nav li ul{width:100%;position:absolute;z-index:99;display:none;}
+.nav li:hover>ul{display:block;}
+.nav ul ul{left:0;top:30px;}
+.nav ul ul ul{left:130px;top:0;}
+</style>
+
+<div class="m20">ie6 html hack</div>
+<style type="text/css">
+.nav2{width:400px;margin:0 auto;margin-top:20px;_margin-top:10px;font-family:Verdana;font-size:13px;z-index:40;}
+
+.hmenu{overflow:visible !important;}
+.hmenu ul{list-style:none outside none;z-index:1;}
+.hmenu li{float:left;position:relative;}
+.hmenu ul li ul{position:absolute;visibility:hidden;z-index:99;top:29px;}
+.hmenu ul li table{border-collapse:collapse;border:0px;position:absolute;z-index:99;top:0;left:0;}
+.hmenu ul li:hover ul,
+.hmenu ul a:hover ul{visibility:visible;}
+.hmenu a{
+    display:block;
+    color:#fff;
+    text-decoration:none;
+    line-height:30px;
+    width:90px;
+    height:30px;
+    padding-left:9px;
+    border-right:solid 1px #ccc;
+    border-bottom:solid 1px #ccc;
+    background:#808080;
+}
+.hmenu ul li ul li a{
+  width:150px;
+}
+.hmenu a:hover,
+.hmenu ul ul li a{background:#666;}
+.hmenu ul ul li a:hover{background:#333;visibility:visible;}
+
+</style>
+<div class="nav2 clearfix ml100">
+<div class="hmenu">
+<ul>
+<li><a href="#a">栏目一</a></li>
+<li><a href="#a">栏目二 >>
+<!--[if gte IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+  <ul>
+  <li><a href="#a">子栏目21子栏目21</a></li>
+  <li><a href="#a">子栏目22</a></li>
+  <li><a href="#a">子栏目23</a></li>
+  <li><a href="#a">子栏目24</a></li>
+  </ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a href="#a">栏目三</a></li>
+</ul>
+</div>
+</div><!-- nav2 -->
+
+
+<div class="m20">ie6 采用 behavior:url(csshover.htc)</div>
+<!--[if lte IE 6]>
+<style type="text/css">
+.nav3{behavior:url(csshover.htc);}
+</style>
+<![endif]-->
+<style type="text/css">
+.nav3{width:800px;margin:0 auto;margin-top:20px;font-family:Verdana;font-size:13px;z-index:30;}
+.nav3 ul{list-style-type:none;}
+.nav3 li{float:left;width:100px;height:30px;display:inline;position:relative;}
+.nav3 a{display:block;color:#fff;text-decoration: none;line-height: 29px;width:90px;padding-left:9px;
+    border-right:solid 1px #ccc;border-bottom:solid 1px #ccc;background: #808080;}
+.nav3 a:hover{background:#666;}
+
+.nav3 .level1,
+.nav3 .level2,
+.nav3 .level3{width:100%;position:absolute;z-index:99;display:none;}
+.nav3 .level0 li:hover .level1,
+.nav3 .level1 li:hover .level2,
+.nav3 .level2 li:hover .level3{display:block;}
+.nav3 .level1{left:0;top:30px;}
+.nav3 .level2,
+.nav3 .level3{left:100px;top:0;}
+</style>
+
+<div class="nav3 clearfix">
+<ul class="level0">
+<li><a href="#a">你好你好</a></li>
+<li><a href="#a">你好 >></a>
+  <ul class="level1">
+  <li><a href="#a">子菜单21子菜单21 >></a>
+    <ul class="level2">
+    <li><a href="#a">子菜单21子菜单211 >></a>
+      <ul class="level3">
+      <li><a href="#a">子菜单21子菜单2111</a></li>
+      <li><a href="#a">子菜单21子菜单2112</a></li>
+      <li><a href="#a">子菜单21子菜单2113</a></li>
+      </ul>
+    </li>
+    <li><a href="#a">子菜单21子菜单212 >></a>
+      <ul class="level3">
+      <li><a href="#a">子菜单21子菜单2121</a></li>
+      <li><a href="#a">子菜单21子菜单2122</a></li>
+      <li><a href="#a">子菜单21子菜单2123</a></li>
+      </ul>
+    </li>
+    <li><a href="#a">子菜单21子菜单213</a></li>
+    </ul>
+  </li>
+  <li><a href="#a">你好你好22 >></a>
+    <ul class="level2">
+    <li><a href="#a">子菜单221</a></li>
+    <li><a href="#a">子菜单222</a></li>
+    <li><a href="#a">子菜单223</a></li>
+    </ul>
+  </li>
+  <li><a href="#a">你好23</a>
+  </ul>
+</li>
+<li><a href="#a">菜单三</a></li>
+</ul>
+</div><!-- nav3 -->
+
+
+<div class="m20">多级导航</div>
+<style type="text/css">
+#menubar ul.menus li {
+  float:left;
+  list-style:none;
+  margin-right:1px;
+}
+#menubar ul.menus li a {
+  padding:5px 10px;
+  display:block;
+  color:#FFF;
+  background:#67ACE5;
+  text-decoration:none;
+}
+#menubar ul.menus li.current-cat a {
+  background:#5495CD;
+}
+#menubar ul.menus li a:hover, 
+#menubar ul.menus li a.current {
+  background:#4281B7;
+}
+#menubar ul.children {
+  display:none; 
+  padding:0;
+  margin:0;
+}
+#menubar ul.children li {
+  float:none;
+  margin:0;
+  padding:0;
+  display:inline; /* 对 IE6 来说十分很重要 */
+}
+
+#menubar ul.children li a {
+  width:100px; /* 对 IE6 来说十分很重要 */
+}
+#menubar ul.children li a.subtitle {
+  border-right:3px solid #4281B7;
+  width:97px;
+}
+</style>
+
+<script type="text/javascript">
+/** 类 */
+var Class = {
+  create: function() {
+    return function() {
+      this.initialize.apply(this, arguments);
+    }
+  }
+}
+
+/** 菜单列表 */
+var MenuList = Class.create();
+MenuList.prototype = {
+
+  /**
+   * 构造方法
+   * id: 菜单列表
+   * opacity: 不透明度 (0.0 - 1.0, 0.0 为全透明, 1.0 为不透明)
+   */
+  initialize: function(id, opacity) {
+    // 获取菜单列表
+    this.obj = document.getElementById(id);
+    if (!this.obj) { return; }
+
+    // 找到所有的菜单
+    var menus = this.obj.getElementsByTagName('ul');
+    for (var i = 0; i < menus.length; i++) {
+      // 找到菜单的父节点 (包括标题链接部分)
+      var menu = menus[i].parentNode;
+
+      // 如果菜单的父节点就是根菜单, 显示一般的菜单
+      if(menu.parentNode === this.obj) {
+        new Menu(menu, opacity);
+
+      // 如果菜单的父节点不是根菜单, 说明当前菜单是子菜单
+      } else {
+        new Menu(menu, opacity, 1);
+        // 在子菜单的标题链接上加上 class 名, 以便定义样式
+        menu.firstChild.className += ' subtitle';
+      }
+    }
+    /*
+    // 对菜单列表内的所有菜单进行处理
+    var menus = this.obj.childNodes;
+    for (var i = 0; i < menus.length; i++) {
+      var menu = menus[i];
+      if (menu.tagName == 'LI') {
+        // 构建菜单
+        new Menu(menu, opacity);
+      }
+    }
+    */
+  }
+}
+
+/** 菜单 */
+var Menu = Class.create();
+Menu.prototype = {
+
+  /**
+   * 构造方法
+   * target: 目标菜单
+   * opacity: 不透明度 (0.0 - 1.0, 0.0 为全透明, 1.0 为不透明)
+   * sub: 是否为子菜单 (1 为肯定, -1 为否定) [multi 2009/06/11 ADD]
+   */
+  initialize: function(target, opacity, sub) {
+    this.util = new MenuUtil();
+
+    // 获取目标菜单 (没多余元素)
+    this.obj = this.util.cleanWhitespace(target);
+
+    // 定义透明度, 默认透明
+    this.opacity = opacity || 1;
+
+    // 是否为子菜单
+    this.sub = sub || -1;
+
+    // 获取菜单
+    this.menu = this.obj.childNodes
+
+    // 重要! 如果菜单不包含菜单项, 则不进行处理
+    if (this.menu.length < 2) { return; }
+
+    // 菜单标题和菜单体
+    this.title = this.menu[0];
+    this.body = this.menu[1];
+
+    // 定义初始样式
+    this.util.setStyle(this.body, 'visibility', 'hidden');
+    this.util.setStyle(this.body, 'position', 'absolute');
+    //this.util.setStyle(this.body, 'overflow', 'hidden');
+    this.util.setStyle(this.body, 'display', 'block');
+
+    // 添加监听器
+    this.addListener(this.obj, 'mouseover', this.util.bind(this, this.activate), false);
+    this.addListener(this.obj, 'mouseout', this.util.bind(this, this.deactivate), false);
+  },
+
+  /**
+   * 激活方法
+   * 当鼠标移动到菜单标题是激活
+   */
+  activate: function() {
+
+    // 获取当前菜单体的位置 (子菜单)
+    if(this.sub == 1) {
+      var pos = this.util.currentOffset(this.title);
+      var left = this.util.getWidth(this.body);
+      var top = pos[1];
+
+    // 获取当前菜单体的位置 (菜单)
+    } else {
+      var pos = this.util.cumulativeOffset(this.title);
+      var left = pos[0];
+      var top = pos[1] + this.util.getHeight(this.title);
+      // 子菜单不需要设置不透明度, 否则会形成多重透明, 效果不好.
+      this.util.setStyle(this.body, 'opacity', this.opacity);
+    }
+    // 当前选中菜单加上 class 名为, 以便定义样式
+    this.title.className += ' current';
+
+    // 定义激活时样式
+    this.util.setStyle(this.body, 'left', left + 'px');
+    this.util.setStyle(this.body, 'top', top + 'px');
+    this.util.setStyle(this.body, 'visibility', 'visible');
+
+    // 子菜单不需要设置不透明度 (请参考前几行的注释)
+    //this.util.setStyle(this.body, 'opacity', this.opacity);
+    // IE 不能设置不透明度, 否则子菜单显示不出来
+    //this.util.setStyle(this.body, 'filter', 'alpha(opacity=' + this.opacity * 100 + ')');
+  },
+
+  /**
+   * 解除方法
+   * 当鼠标移动出菜单标题是激活
+   */
+  deactivate: function(){
+    // 定义解除时样式
+    this.util.setStyle(this.body, 'visibility', 'hidden');
+
+    // 离开菜单时取消当前菜单上的 class 名, 恢复原本的样式
+    this.title.className = this.title.className.replace('current', '');
+  },
+
+  /**
+   * 监听方法
+   * element: 监听对象
+   * name: 监听方法
+   * observer: 执行的方法
+   * useCapture: 浏览器调用事件的方式 (true 为 Capture 方式, false 为 Bubbling 方式)
+   */
+  addListener: function(element, name, observer, useCapture) {
+    if(element.addEventListener) {
+      element.addEventListener(name, observer, useCapture);
+    } else if(element.attachEvent) {
+      element.attachEvent('on' + name, observer);
+    }
+  }
+}
+
+var MenuUtil = Class.create();
+MenuUtil.prototype = {
+  initialize: function() {
+  },
+
+  $: function(id) {
+    return document.getElementById(id);
+  },
+
+  $A: function(iterable) {
+    if(!iterable) {
+      return [];
+    }
+    if(iterable.toArray) {
+      return iterable.toArray();
+    } else {
+      var results = [];
+      for(var i = 0; i < iterable.length; i++) {
+        results.push(iterable[i]);
+      }
+      return results;
+    }
+  },
+
+  bind: function() {
+    var array = this.$A(arguments);
+    var func = array[array.length - 1];
+    var _method = func, args = array, object = args.shift();
+    return function() {
+      return _method.apply(object, args.concat(array));
+    }
+  },
+
+  getHeight: function(element) {
+    return element.offsetHeight;
+  },
+
+  setStyle: function(element, key, value) {
+    element.style[key] = value;
+  },
+
+  getStyle: function(element, key) {
+    return element.style[key];
+  },
+
+  cleanWhitespace: function(list) {
+    var node = list.firstChild;
+    while (node) {
+      var nextNode = node.nextSibling;
+      if(node.nodeType == 3 && !/\S/.test(node.nodeValue)) {
+        list.removeChild(node);
+      }
+      node = nextNode;
+    }
+    return list;
+  },
+
+  cumulativeOffset: function(element) {
+    var valueT = 0, valueL = 0;
+    do {
+      valueT += element.offsetTop  || 0;
+      valueL += element.offsetLeft || 0;
+      element = element.offsetParent;
+    } while (element);
+    return [valueL, valueT];
+  },
+
+  getWidth: function(element) {
+    return element.offsetWidth;
+  },
+
+  currentOffset: function(element) {
+    var valueT = element.offsetTop  || 0;
+    var valueL = element.offsetLeft || 0;
+    return [valueL, valueT];
+  }
+}
+
+/** 添加到页面加载事件 */
+function func() {
+  new MenuList('menus', 0.9);
+}
+
+addLoadEvent(func);
+</script>
+
+<div id="menubar" class="m20">
+<ul id="menus" class="menus">
+<li class="current-cat"><a title="Home" href="../">All demos</a></li>
+<li class="cat-item cat-item-4"><a href="javascript:;" >.Net</a>
+  <ul class="children">
+    <li class="cat-item cat-item-41"><a href="javascript:;" >ADO.NET</a></li>
+    <li class="cat-item cat-item-42"><a href="javascript:;" >ASP.NET</a></li>
+    <li class="cat-item cat-item-43"><a href="javascript:;" >C#</a></li>
+  </ul>
+</li>
+<li class="cat-item cat-item-5"><a href="javascript:;" >Java</a>
+  <ul class="children">
+    <li class="cat-item cat-item-51">
+      <a href="javascript:;" >EJB</a>
+      <ul class="children">
+        <li class="cat-item cat-item-511"><a href="javascript:;" >EJB 3</a></li>
+        <li class="cat-item cat-item-512"><a href="javascript:;" >EJB 4</a></li>
+      </ul>
+    </li>
+    <li class="cat-item cat-item-52"><a href="javascript:;" >Hibernate</a></li>
+    <li class="cat-item cat-item-53"><a href="javascript:;" >Java core</a></li>
+    <li class="cat-item cat-item-54"><a href="javascript:;" >JSP</a></li>
+    <li class="cat-item cat-item-55"><a href="javascript:;" >Spring</a></li>
+    <li class="cat-item cat-item-56">
+      <a href="javascript:;" >Struts</a>
+      <ul class="children">
+        <li class="cat-item cat-item-561"><a href="javascript:;" >Struts 1.1</a></li>
+        <li class="cat-item cat-item-562"><a href="javascript:;" >Struts 1.2</a></li>
+        <li class="cat-item cat-item-563"><a href="javascript:;" >Struts 2</a></li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li class="cat-item cat-item-6"><a href="javascript:;" >Web</a>
+  <ul class="children">
+    <li class="cat-item cat-item-61">
+      <a href="javascript:;" >(X)HTML</a>
+      <ul class="children">
+        <li class="cat-item cat-item-611"><a href="javascript:;" >HTML 4.0</a></li>
+        <li class="cat-item cat-item-612">
+          <a href="javascript:;" >HTML 4.01</a>
+          <ul class="children">
+            <li class="cat-item cat-item-6121"><a href="javascript:;" >HTML 4.01 Transitional</a></li>
+            <li class="cat-item cat-item-6122"><a href="javascript:;" >HTML 4.01 Frameset</a></li>
+            <li class="cat-item cat-item-6123"><a href="javascript:;" >HTML 4.01 Strict</a></li>
+          </ul>
+        </li>
+        <li class="cat-item cat-item-613">
+          <a href="javascript:;" >XHTML 1.0</a>
+          <ul class="children">
+            <li class="cat-item cat-item-6131"><a href="javascript:;" >XHTML 1.0 Transitional</a></li>
+            <li class="cat-item cat-item-6132"><a href="javascript:;" >XHTML 1.0 Frameset</a></li>
+            <li class="cat-item cat-item-6133"><a href="javascript:;" >XHTML 1.0 Strict</a></li>
+          </ul>
+        </li>
+        <li class="cat-item cat-item-614"><a href="javascript:;" >HTML 1.1</a></li>
+      </ul>
+    </li>
+    <li class="cat-item cat-item-62">
+      <a href="javascript:;" >CSS</a>
+      <ul class="children">
+        <li class="cat-item cat-item-621"><a href="javascript:;" >CSS 2</a></li>
+        <li class="cat-item cat-item-622"><a href="javascript:;" >CSS 2.1</a></li>
+        <li class="cat-item cat-item-623"><a href="javascript:;" >CSS 3</a></li>
+      </ul>
+    </li>
+    <li class="cat-item cat-item-63">
+      <a href="javascript:;" >PHP</a>
+      <ul class="children">
+        <li class="cat-item cat-item-621"><a href="javascript:;" >PHP 4</a></li>
+        <li class="cat-item cat-item-622"><a href="javascript:;" >PHP 5</a></li>
+        <li class="cat-item cat-item-623"><a href="javascript:;" >PHP 6</a></li>
+      </ul>
+    </li>
+    <li class="cat-item cat-item-64"><a href="javascript:;" >JavaScript</a></li>
+  </ul>
+</li>
+</ul>
+</div>
+
+
+</body>
+</html>

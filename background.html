@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Background</title>
+<script language="javascript" type="text/javascript">
+/**
+*运行代码
+*/
+function runCode(obj)  {
+	if (!obj) return false;
+	var code=document.getElementById(obj).value;
+	if(code!=""){
+		var win=window.open('','_blank','');
+		win.opener = null;
+		win.document.write(code);  
+		win.document.close();
+	}
+}
+</script>
+</head>
+<body>
+
+<style type="text/css">
+*{margin:0;padding:0;}
+.box{width:800px;height:500px;margin:0 auto;margin-top:20px;}
+textarea{height:520px;width:780px;border:1px solid #ccaaff;padding:3px;font-family:Verdana;font-size:13px;line-height:16px;}
+
+.boxw{width:80%;height:500px;margin:0 auto;margin-top:20px;min-width:400px;max-width:800px;_width:800px;}
+.wrap1{width:20%;height:100%;float:left;min-width:80px;_width:160px;}
+.wrap2{width:80%;height:100%;float:right;min-width:320px;_width:640px;}
+.wrap1 .bg,
+.wrap2 .bg0{height:100%;border:1px solid #666;}
+.wrap2 .bg0{margin-left:10px;}
+.wrap2 .bg1{height:100%;}
+.wrap1 .bg{background:transparent url("images/rule_500x500.jpg") no-repeat scroll 0 0;}
+.wrap2 .bg0{background:transparent url("images/rule_500x500.jpg") no-repeat scroll 0 -250px;}
+.wrap2 .bg1{background:transparent url("images/rule_500x500.jpg") no-repeat scroll 20% 250px;}
+</style>
+
+<div class="boxw">
+<div class="wrap1">
+<div class="bg">
+<p>wrap1</p>
+</div>
+</div>
+<div class="wrap2">
+<div class="bg0">
+<div class="bg1">
+<p>wrap2</p>
+</div>
+</div>
+</div>
+</div><!--boxw-->
+
+<style type="text/css">
+#wrapper {width: 85%;height:80px;margin: 0 auto;margin-top:20px;background: #fff url(images/bl.gif) repeat-y 23% 0;}
+#wrapper2 {height:100%;background: url(images/br.gif) repeat-y 78% 0;}
+
+#content {width:75%;float:right;}
+#mainContent {width:66%;float:left;}
+#secondaryContent {width:31%;min-width:10em;display:inline;float:right;} 
+</style>
+
+<div id="wrapper">
+<div id="wrapper2">
+
+<div id="branding">
+<p>Branding</p>
+</div> 
+
+<div id="content"> 
+<div id="mainContent">
+  <p>mainContent</p>
+</div> 
+<div id="secondaryContent">
+  <p>secondaryContent</p>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="box">
+<strong>
+<p>背景图片用%百分比定位时，计算规则是：图片(0,0)的位置：(容器-图片)%。</p>
+<p>如：</p>
+<p>计算（宽，高）图片%=(116,153);容器%=(132,245);则图片的(116,153)与容器的(132,245)点位置对应。</p>
+</strong>
+<input onclick="runCode('code')" type="button" value="运行代码" />
+<textarea id="code" name="code">
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
+&lt;title&gt;Background&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;style type="text/css"&gt;
+*{margin:0;padding:0;}
+.box{width:800px;margin:0 auto;margin-top:20px;}
+textarea{height:520px;width:780px;border:1px solid #ccaaff;padding:3px;font-family:Verdana;font-size:13px;line-height:16px;}
+
+.boxw{width:80%;height:500px;margin:0 auto;margin-top:20px;min-width:400px;max-width:800px;_width:800px;}
+.wrap1{width:20%;height:100%;float:left;min-width:80px;_width:160px;}
+.wrap2{width:80%;height:100%;float:right;min-width:320px;_width:640px;}
+.wrap1 .bg,
+.wrap2 .bg0{height:100%;border:1px solid #666;}
+.wrap2 .bg0{margin-left:10px;}
+.wrap2 .bg1{height:100%;}
+.wrap1 .bg{background:transparent url("images/rule_500x500.jpg") no-repeat scroll 0 0;}
+.wrap2 .bg0{background:transparent url("images/rule_500x500.jpg") no-repeat scroll 0 -250px;}
+.wrap2 .bg1{background:transparent url("images/rule_500x500.jpg") no-repeat scroll 20% 250px;}
+&lt;/style&gt;
+
+&lt;div class="boxw"&gt;
+&lt;div class="wrap1"&gt;
+&lt;div class="bg"&gt;
+&lt;p&gt;wrap1&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="wrap2"&gt;
+&lt;div class="bg0"&gt;
+&lt;div class="bg1"&gt;
+&lt;p&gt;wrap2&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;!--boxw--&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</textarea>
+
+</div><!--box end-->
+
+</body>
+</html>

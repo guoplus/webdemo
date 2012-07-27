@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>两侧高度自适应中间2</title>
+</head>
+<body>
+
+<style type="text/css"> 
+*{margin:0;padding:0;}
+body{font-size:12px;}
+#top{width:898px;height:20px;border:1px solid #B50729;margin:0 auto;}
+#mid{width:900px;margin:0 auto;margin-top:7px;}
+#midBackground{width:898px;border:1px solid #B50729;float:left;background-color:#F1F8FC;}
+
+#midLeft{float:left;width:150px;}
+#midLeftBottom{float:left;width:750px;background-color:#FFEEFF;}
+#midMid{float:left;background-color:#F8FFDD;margin-left:7px;}
+#midMidContent{float:left;width:auto;background-color:#FFF8EE;}
+
+#midRight{float:right;width:150px;}
+.content{margin:20px;}
+
+#footerOnSpace{clear:both;width:900px;border:0;margin:0 auto;}
+#footer{width:898px;border:1px solid #B50729;margin:0 auto;}
+</style>
+
+<div id="top">-id="banner"</div>
+
+<div id="mid">
+<div id="midBackground">
+-id="mid"<br/>
+--id="midBackground" >> float:left;background-color:#F1F8FC;(定义左侧背景)<br/>
+
+<div id="midLeft">
+---id="midLeft"
+<p>midLeft<br/>midLeft<br/>midLeft<br/>midLeft<br/>midLeft<br/>midLeft<br/></p>
+</div>
+
+<div id="midMid">
+
+<div id="midRight">
+----id="midRight" >> float:right;width:150px;
+</div>
+
+<div id="midMidContent">
+<div class="content">
+---id="midMid" >> float:left;background-color:#F8FFDD;(右侧背景)<br/>
+----id="midMidContent" >> float:left;width:500px;background-color:#FFF8EE;(中间背景)<br />
+-----class="content" >> margin:20px;<br/>
+<p>midMidContent<br/>midMidContent<br/>midMidContent<br/>midMidContent<br/>midMidContent<br/>midMidContent<br/></p>
+</div>
+</div>
+
+</div>
+
+<div id="midLeftBottom">
+---id="midLeftBottom" >> 控制左栏、右栏下边圆角等样式。
+</div>
+
+</div><!--midBackground end-->
+</div><!--mid end-->
+
+<div id="footerOnSpace">
+-id="footerOnSpace" >> 
+在#footer上加17px空白。<br />
+midBackground因为是float:left;自动具有的高度。<br />
+#footer 中 margin-top:7px; Firefox不认,IE认。<br />
+#midBackground 中 margin-bottom:7px; Firefox认，IE不认。
+</div>
+
+<div id="footer">
+-id="footer"
+</div>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>模拟下拉选项菜单</title>
+<link href="css/lib.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+a,
+a:link,
+a:visited,
+a:active{text-decoration:none;}
+a:hover{text-decoration:underline;}
+li{float:left;margin-left:10px;list-style-type:none;}
+.right_info {
+  padding: 10px 0 0 0;
+  color: #333;
+  text-align: right;
+}
+.right_info li {
+  float: left;
+  line-height: 19px;
+  *line-height: 22px;
+  _line-height: 19px;
+  display: block;
+  padding: 0 0 0 9px;
+  position: relative;
+}
+.right_info li a {
+  color: #333;
+}
+.right_info li b {
+  width: 8px;
+  height: 8px;
+  margin-left:6px;
+}
+.right_info li.pr {
+  padding-right: 15px;
+  cursor: pointer;
+  position:relative;
+}
+.m_h {
+  display: none;
+  width: 193px;
+  height: auto;
+  padding: 10px;
+  border: 1px solid #959595;
+  background: #fff;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  position: absolute;
+  top: 14px;
+  *top: 10px;
+  _top: 10px;
+  right: -2px;
+  _right: -2px;
+  z-index: 10001;
+}
+.m_h dl {
+  display: block;
+  margin: 0 0 10px 0;
+  padding: 0 0 7px 0;
+  border-bottom: 1px dashed #d6d6d6;
+}
+.m_h dl.n {
+  border-bottom: 0;
+  padding: 0;
+  margin: 0;
+}
+.m_h dt {
+  display: block;
+  color: #2375b1;
+  font-weight: bold;
+}
+.m_h dt.g {
+  color: #999;
+}
+.m_h dd {
+  padding-top: 3px;
+  color: #535353;
+  line-height: 21px;
+}
+.m_h dd a {
+  color: #535353;
+}
+.m_h dd a: hover {
+  color: #266392;
+  text-decoration: underline;
+}
+.m_h .m_h_t {
+  height: 15px;
+  padding: 4px 17px 0 7px;
+  border: 1px solid #959595;
+  border-bottom: none;
+  background: #fff;
+  -webkit-border-top-left-radius: 2px;
+  -webkit-border-top-right-radius: 2px;
+  -moz-border-radius-topleft: 2px;
+  -moz-border-radius-topright: 2px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  position: absolute;
+  right: -1px;
+  top: -20px;
+}
+.m_h .m_h_t b {
+  width: 8px;
+  height: 8px;
+  margin-left:6px;
+}
+</style>
+<script src="js/jquery-1.6.2.min.js" type="text/javascript" ></script>
+<script type="text/javascript">
+function ShowSubMenu(submenu_id,menu_id,cname)
+{
+    $("div[name='submenu']").css("display","none");
+    if(submenu_id == "site_map_menu")
+    {
+        $("#"+submenu_id).css({'display':'block'});
+    }
+    else
+    {
+        $("#"+submenu_id).css({'display':'block','cursor':'hand'});
+    }
+    if(typeof(menu_id) != "undefined")
+    {
+        $("#"+menu_id).attr("class",cname);
+    }
+}
+
+function HideSubMenu(submenu_id,menu_id)
+{
+    $("#"+submenu_id).css("display","none");
+    if(typeof(menu_id) != "undefined")
+    {
+        $("#"+menu_id).attr("class","");
+    }
+}
+</script>
+</head>
+<body>
+
+<div class="m20">
+<div class="ml200 right_info">
+<ul>
+<li>占位</li>
+<li class="pr">
+<a href="javascript:;" onmouseover="ShowSubMenu('site_map_menu');" onmouseout="HideSubMenu('site_map_menu');">站点地图<b>&#x25BC;</b></a>
+<div class="m_h tl" style="display: none; " id="site_map_menu" onmouseover="ShowSubMenu('site_map_menu');" onmouseout="HideSubMenu('site_map_menu');">
+  <div class="m_h_t">站点地图<b>&#x25B2;</b></div>
+    <dl>
+    <dt><a href="javascript:;">首页</a></dt>
+    </dl>
+    
+    <dl>
+    <dt><a href="javascript:;">帐号保护</a></dt>
+    <dd>
+    <a href="javascript:;">Q币Q点保护</a>
+    <a href="javascript:;">QQ登录保护</a>
+    <a href="javascript:;">游戏保护</a>
+    <a href="javascript:;">QQ秀物品保护</a>
+    </dd>
+    </dl>
+    
+    <dl>
+    <dt><a href="javascript:;">密保工具箱</a></dt>
+    <dd>
+    <a href="javascript:;">密保问题</a>
+    <a href="javascript:;">密保手机</a>
+    <a href="javascript:;">密保卡</a>
+    <a href="javascript:;">QQ令牌</a>
+    <a href="javascript:;">手机令牌</a>
+    <a href="javascript:;">申请重置密保</a>
+    </dd>
+    </dl>
+
+    <dl class="n">
+    <dt class="g">其他</dt>
+    <dd>
+    <a href="javascript:;">举报</a>
+    <a href="javascript:;">网址申诉</a>
+    <a href="javascript:;">网址安全检测</a><br>
+    <a href="javascript:;">个人资料</a>
+    <a href="javascript:;">系统公告</a>
+    </dd>
+    </dl>
+</div>
+</li>
+<li><a href="javascript:;">客服</a></li>
+</ul>
+</div>
+</div>
+
+</body>
+</html>
