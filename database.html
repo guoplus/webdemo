@@ -1,0 +1,115 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>数据表20120706</title>
+<style  type="text/css">
+img{border:0;}
+
+#toT0{z-index:99;position:fixed;left:500px;top:20px;overflow:visible;}
+#toT0 a:link,
+#toT0 a:visited,
+#toT0 a:hover{text-align:center;line-height:25px;color:#fff;font-size:14px;text-decoration:none;
+               display:block;width:100px;height:25px;background-color:#808080;}
+#toT0 a:hover{background-color:#666;}
+ 
+#toT0 ul{list-style:none;}
+#toT0 li{float:left;}
+#toT0 ul ul{visibility:visible;position:absolute;left:0px;top:39px;}     
+#toT0 table{position:relative;left:0;top:25px;}
+#toT0 ul li:hover ul,
+#toT0 ul a:hover ul{visibility:visible;}
+#toT0 ul ul li a:link,
+#toT0 ul ul li a:visited,
+#toT0 ul ul li a:hover{display:block;text-align:left;text-indent:0.5em;text-decoration:none;width:350px;height:25px;
+                       color:#fff;line-height:25px;background:#666;}
+#toT0 ul ul li a:hover{background:#333;}
+
+#list{
+	height:500px;
+	overflow-y:auto;
+	overflow-x:hidden;
+}
+</style>
+<script type="text/javascript">
+
+function initList(){
+  var tbllist = document.getElementById("tbllist").innerHTML;
+  //alert(tbllist);
+  var tbls = tbllist.split(" ");
+  //alert(tbls);
+  var strl = "";
+  var list = ""; // 要插入的文本
+  for(var i=0,len=tbls.length;i<len;i++){
+    if(tbls[i].indexOf('t_') != -1){
+	  var slen = tbls[i].length;
+	  strl = strl+"<h2 id='"+tbls[i].substr(0,slen-1)+"'>"+tbls[i-1]+" "+tbls[i]+"</h2><img src='images/"+tbls[i]+".png'/>";
+	  list = list+"<li><a href='#"+tbls[i].substr(0,slen-1)+"'>"+tbls[i-1]+" "+tbls[i]+"</a></li>";
+	}
+  }
+
+  var tblloc = document.getElementById("tbl_list");
+  tblloc.innerHTML = strl;
+  var loc = document.getElementById("list");
+  loc.innerHTML = list;
+
+}
+
+
+function addLoadEvent(func){
+  var oldonload=window.onload;
+  if(typeof window.onload!='function'){
+    window.onload=func;
+  }else{
+    window.onload=function(){
+	  oldonload();
+	  func();
+	}
+  }
+}
+
+addLoadEvent(initList);
+
+</script>
+</head>
+<body>
+
+<script id="tbllist" type="text/template">
+ 项目基本信息表 t_sp_xmjbxx_rs
+ 项目单位信息表 t_sp_xmdw_rs
+ 待审批事项表 t_sp_dspsx_rs
+ 项目标识信息表 t_sp_xmbsxx_rs
+ 标识类别信息表 t_sp_bslb_rs
+ 业务基本信息表 t_sp_ywjbxx_wk
+ 业务环节信息表 t_sp_ywhj_wk
+ 资金信息表 t_sp_zjxx_wk
+ 入库信息表 t_sp_rkxx_wk
+ 材料文书信息表 t_sp_tjwj_wk
+ 审查意见表 t_sp_scyj_wk
+ 审批意见表 t_gg_spyj
+ 审批系统常用意见代码表 t_dm_sp_cyyj
+ 业务事项代码表 t_dm_gg_ywsx
+ 审批进度代码表 t_dm_sp_spjd
+ 进度事项参数表 t_dm_sp_jdsxcs
+ 委托评估信息表 t_sp_wtpg_wk
+ 委托函件信息表 t_sp_wthjxx_wk
+ 委托付费信息表 t_sp_wtff_wk
+ 项目委托信息表 t_sp_xmwtxx_wk
+ 单位基本信息表 t_gg_dwjbxx
+ 评估单位表 t_gg_pgdw
+ 评估审核组表 t_gg_pgshz
+ 异常信息表 t_xt_ycm
+</script>
+
+<div id="tbl_list"></div>
+
+<div id="toT0">
+<ul><li>
+<a href="#t0">目录<!--[if IE 7]><!--></a><!--<![endif]--><!--[if lte IE 6]><table><tr><td><![endif]-->   
+<ul id="list">
+
+</ul><!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li></ul>
+</div>
+
+</body>
+</html>
