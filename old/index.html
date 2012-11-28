@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>web demo</title>
+<style tyle="text/css">
+.conbox{
+  width:700px;
+  margin:0 auto;
+  padding:10px;
+}
+h2{
+font-family:Verdana;
+font-size:20px;
+line-height:25px;
+font-weight:bold;
+}
+a,
+a:link,
+a:visited{
+display:inline-block;
+margin:0 10px 0 10px;
+font-size:13px;
+line-height:22px;
+color:#363636;
+text-decoration:none;
+}
+a:hover{
+text-decoration:underline;
+color:#367517;
+}
+</style>
+<script src="js/addLoadEvent.js" type="text/javascript" ></script>
+<script type="text/javascript">
+function addBlank(){
+  var as = document.getElementsByTagName("a");
+  for(var i=0;i<as.length;i++){
+    as[i].setAttribute("target","-blank");
+  }
+}
+addLoadEvent(addBlank);
+</script>
+</head>
+<body>
+<div class="conbox">
+<h2>工具</h2>
+<a href="xhtml-template.html">xhtml模版</a>
+<a href="runcode.html">HTML代码编辑运行</a>
+<a href="colortool.html">调色板</a>
+<a href="colors/index.html">配色方案</a>
+
+<h2>demo</h2>
+<a href="drop-down-menu.html">导航下拉菜单</a>
+<a href="drop-select.html">模拟下拉选项卡</a>
+<a href="nav-arrow.html">箭头导航设计</a>
+<a href="content.html">文字-效果</a>
+<a href="ie6hack.html">IE6 bug hack</a>
+<a href="background.html">背景</a>
+<a href="height-adaptive.html">三栏高度自适应</a>
+<a href="height-adaptive2.html">三栏高度自适应2（推荐）</a>
+<a href="fullscreen.html">全屏</a>
+<a href="pagenav/index.html">页码导航</a>
+<a href="jsontree.html">JSON树菜单</a>
+<a href="database.html">数据表下拉导航菜单</a>
+<a href="enclosing-float-and-clearing-float.html">关闭或清除浮动</a>
+
+<h2>库</h2>
+<a href="calendar/calendar.html">日期选择控件</a>
+<a href="lofjslidernews/index.html">基于jQuery的slider库-lofjslidernews</a>
+
+<h2>特效</h2>
+<a href="clickwater.html">鼠标触发水波特效</a>
+<a href="pic-slideshow.html">图片幻灯片</a>
+
+<h2>HTML5</h2>
+<a href="html5.html">html5动画</a>
+
+</body>
+</html>
