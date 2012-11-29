@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>幻灯片</title>
+</head>
+<body>
+
+<h1>幻灯片</h1>
+<p>本幻灯片基于jquery，来自im.qq.com，没有预加载。</p>
+<hr>
+
+<div style="margin:0 auto">
+
+<div class="newBanner">
+    <ul class="bannerImg">
+        <li style="opacity: 0; z-index: 0;">
+            <a href="#1" target="_blank"><img alt="[图]" src="img/w0.jpg" width="704px" height="280px"></a>
+        </li>
+        <li class="smask" style="opacity: 0; z-index: 0;">
+            <a href="#2" target="_blank"><img alt="[图]" src="img/w1.jpg" width="704px" height="280px"></a>
+        </li>
+        <li class="smask" style="opacity: 1; z-index: 1;">
+            <a href="#3" target="_blank"><img alt="[图]" src="img/w2.jpg" width="704px" height="280px"></a>
+        </li>
+    </ul>
+    <ol class="bannerNum">
+        <li class="current">1</li>
+        <li class="">2</li>
+        <li class="">3</li>
+    </ol>
+</div>
+
+</div>
+
+<style type="text/css">
+
+.newBanner {
+    background: #fff url(img/loading.gif) no-repeat 50% 50%; width: 704px; height: 280px; float: left; position: relative; overflow: hidden;
+}
+.bannerImg {
+    width: 704px; height: 280px; overflow: hidden;
+}
+.bannerImg li {
+    width: 704px; height: 280px; position: absolute; left: 0; top: 0;
+}
+.bannerImg .smask {
+    z-index: -1; filter: alpha(opacity = 0); -moz-opacity: 0; opacity: 0; zoom: 1;
+}
+.bannerImg img {
+    width: 704px; height: 280px; overflow: hidden;
+}
+.bannerNum {
+    display: block; overflow: hidden; position: absolute; right: 15px; bottom: 10px; z-index: 11;
+}
+.bannerNum li {
+    background-color:#fff; width: 21px; height: 28px; line-height: 28px; color: #390; text-align: center; float: left; display: block; position: relative; z-index: 12; cursor: pointer;
+}
+.bannerNum li.current {
+    background-color:#390; color: #fff; cursor: pointer;
+}
+
+</style>
+
+<script type="text/javascript" src="js/jquery-1.8.2.min.js" ></script>
+
+<script type="text/javascript">
+
+//banner
+jQuery(function () {
+    var index = 0;
+    //自动播放
+    var MyTime;
+    showbanner(index);
+    playAuto();
+
+    function playAuto() {
+        MyTime = setInterval(function () {
+            showbanner(index);
+            index++;
+            if (index == 8) {
+                index = 0;
+            }
+        }, 3000);
+    }
+
+    function showbanner(i) {
+        $(".bannerImg li").stop().eq(i).animate({opacity:1}, 500).css({"z-index":"1"}).siblings().animate({opacity:0}, 500).css({"z-index":"0"});
+        $(".bannerNum li").eq(i).addClass("current").siblings().removeClass("current");
+    }
+
+    $(".bannerNum li").hover(function () {
+        if (MyTime) {
+            clearInterval(MyTime);
+        }
+        index = $(".bannerNum li").index(this);
+        MyTime = setTimeout(function () {
+            showbanner(index);
+            $(".bannerImg").stop();
+        }, 100);
+
+    }, function () {
+        clearTimeout(MyTime);
+        playAuto();
+    });
+    //滑入 停止动画，滑出开始动画.
+    $(".bannerImg").hover(function () {
+        if (MyTime) {
+            clearInterval(MyTime);
+        }
+    }, function () {
+        playAuto();
+    });
+
+});
+
+</script>
+
+</body>
+</html>
