@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="keywords" content="tangram在线调试器" />
+<meta name="description" content="tangram在线调试器" />
+<title>Tangram前端调试器</title>
+<link rel="stylesheet" type="text/css" href="./tools/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="./tools/CodeMirror-2.24/lib/codemirror.css">
+<link rel="stylesheet" type="text/css" href="./tools/CodeMirror-2.24/theme/blackboard.css">
+<link rel="stylesheet" type="text/css" href="./css/demo-style.css">
+</head>
+<body>
+	<!-- 调试显示结果容器 -->
+	<center>
+		<h1>Tangram 前端代码在线调试器</h1>
+		<iframe id="_tangram_debug_result" name="_tangram_debug_result"></iframe>
+	</center>
+	<!-- 调试显示结果容器 end -->
+
+	<!-- 调试编辑容器 -->
+	<div id="_tangram_debug_panel">
+
+		<!-- 调试按钮工具 -->
+		<div id="_tangram_debug_toolbar">
+
+			<!-- 引用文件列表 -->
+			<div id="_tangram_debug_fileList">
+			   <ul class="nav nav-tabs">
+				<li class="dropdown">
+		          <a class="dropdown-toggle" data-toggle="dropdown">
+		          	引用文件列表
+		          	<b class="caret"></b>
+		          </a>
+		          <ul class="dropdown-menu">
+		          	<li><a>点击"运行"后会分析显示</a></li>
+		          </ul>
+		        </li>
+		      </ul>  
+			</div>
+
+			<!-- 引用文件列表 end -->
+			<a id="_tangram_debug_btn_html" class="btn switch_tab btn-primary disabled">HTML</a>			
+			<a class="btn switch_tab">CSS</a>
+			<a class="btn switch_tab">Javascript</a>
+			<a id="_tangram_debug_btn_reset" class="btn btn-danger">重设</a>
+			<a id="_tangram_debug_btn_run" class="btn btn-success">运行</a>
+			<!-- <a id="_tangram_debug_btn_save" class="btn btn-warning">分享</a> -->
+		</div>
+		<!-- 调试按钮工具 end -->
+		<div id='_tangram_debug_allEditor'>	
+			<!-- 编辑HTML容器 -->
+			<div id="_tangram_debug_html" class="editor_tab">
+			</div>
+			<!-- 编辑HTML容器 end -->
+
+			<!-- 编辑css容器 -->
+			<div id="_tangram_debug_css" class="editor_tab">
+			</div>
+			<!-- 编辑css容器 end -->
+
+			<!-- 编辑javascript容器 -->
+			<div id="_tangram_debug_javascript" class="editor_tab">
+			</div>
+			<!-- 编辑javascript容器 end -->
+
+			<!-- 用来提交的隐藏form -->
+			<form id="_tangram_debug_form" target="_tangram_debug_result" action="http://tangram.baidu.com/?m=frontData&a=demoEdit" method="post">
+				<input id='_tangram_debug_input_html' type="hidden" name="html">
+				<input id='_tangram_debug_input_css' type="hidden" name="css">
+				<input id='_tangram_debug_input_js' type="hidden" name="js">		
+				<input id='_tangram_debug_input_imports' type="hidden" name="imports">		
+			</form>
+			<!-- 用来提交的隐藏form end -->
+		</div>
+	</div>
+	<!-- 调试编辑容器 end-->
+	<!-- 提示框 -->
+	<div id="_tangram_debug_modal" class="modal">
+	  <div class="modal-header">
+	    <a class="close" data-dismiss="modal">×</a>
+	    <h3 class="msg"></h3>
+	  </div>
+	</div>	
+	<!-- 提示框 end -->
+
+<!-- 数据 -->
+<textarea id="data0-html" style="display:none;">
+
+
+</textarea>
+<textarea id="data0-css" style="display:none;">
+
+
+</textarea>
+<textarea id="data0-js" style="display:none;">
+
+</textarea>
+
+<script type="text/javascript" src="./js/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="./tools/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./tools/CodeMirror-2.24/lib/codemirror.js"></script>
+<script src="./tools/CodeMirror-2.24/mode/xml/xml.js"></script>
+<script src="./tools/CodeMirror-2.24/mode/javascript/javascript.js"></script>
+<script src="./tools/CodeMirror-2.24/mode/css/css.js"></script>
+<script src="./tools/CodeMirror-2.24/mode/htmlmixed/htmlmixed.js"></script>
+<script type="text/javascript" src="./js/demo-main.js"></script>
+</body>
+</html>
