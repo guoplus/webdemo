@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>纯CSS的下拉菜单 支持IE6 IE7 Firefox</title>
+
+<style type="text/css">
+* {
+	margin:0;
+	padding:0;
+}
+.menu {
+	font-size:13px;
+	position:relative;
+	z-index:100;
+}
+.menu ul {
+	list-style:none;
+}
+.menu li {
+	float:left;
+	position:relative;
+}
+.menu ul ul {
+	visibility:hidden;
+	position:absolute;
+	left:3px;
+	top:30px;
+}
+.menu table {
+	position:absolute;
+	top:0;
+	left:0;
+}
+.menu ul li:hover ul,.menu ul a:hover ul {
+	visibility:visible;
+}
+.menu a {
+	display:block;
+	background:#0099CC;
+    height:30px;
+    margin:0 3px;
+    padding:0 10px;
+	color:#fff;
+	text-decoration:none;
+    text-align:center;
+    line-height:30px;
+}
+.menu a:hover {
+	background:#03749D;
+	color:#fff;
+}
+.menu ul ul li {
+	clear:both;
+	text-align:left;
+	font-size:13px;
+}
+.menu ul ul li a {
+	display:block;
+	width:150px;
+	height:30px;
+	margin:0;
+}
+.menu ul ul li a:hover {
+	background:#03749D;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="menu">
+    <ul>
+        <li><a href="">XHTML/CSS 
+            <!--[if IE 7]><!--></a><!--<![endif]-->
+            <!--[if lte IE 6]><table><tr><td><![endif]-->
+            <ul>
+                <li><a href="">标准</a></li>
+                <li><a href="">教程</a></li>
+                <li><a href="">技术文章</a></li>
+                <li><a href="">常见问题</a></li>
+                <li><a href="">布局教程专题</a></li>
+                <li><a href="">CSS菜单</a></li>
+                <li><a href="">浏览器兼容</a></li>
+                <li><a href="">滚动条相关</a></li>
+                <li><a href="">圆角矩形专题</a></li>
+                <li><a href="">CSS特效欣赏专题</a></li>
+            </ul>
+            <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+        </li>
+        <li><a href="">AJAX 
+            <!--[if IE 7]><!--></a><!--<![endif]-->
+            <!--[if lte IE 6]><table><tr><td><![endif]-->
+            <ul>
+                <li><a href="">AJAX教程</a></li>
+                <li><a href="">AJAX技术</a></li>
+                <li><a href="">AJAX技术</a></li>
+                <li><a href="">AJAX技术</a></li>
+            </ul>
+            <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+        </li>
+        <li><a href="">Javascript 
+            <!--[if IE 7]><!--></a><!--<![endif]-->
+            <!--[if lte IE 6]><table><tr><td><![endif]-->
+            <ul>
+                <li><a href="">JSON</a></li>
+                <li><a href="">技术文章</a></li>
+            </ul>
+            <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+        </li>
+        <li><a href="">DOM</a></li>
+        <li><a href="">XML</a></li>
+    </ul>
+</div>
+  
+</body>
+</html> 
