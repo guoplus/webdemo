@@ -2,11 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>高度自适应中间</title>
+<title>两侧高度自适应中间2</title>
 </head>
 <body>
 
 <style type="text/css"> 
+
 * {
 	margin:0;
 	padding:0;
@@ -26,6 +27,7 @@ div{
 
 #top {
 	width:900px;
+	height:20px;
 	margin:10px auto;
 }
 #mid {
@@ -33,32 +35,31 @@ div{
 	margin:10px auto;
 }
 #midBackground {
+	width:900px;
 	float:left;
-}
-#midContent {
-	overflow:hidden;
-}
-#midLeft,#midRight {
-	padding-bottom:100000px;
-	margin-bottom:-100000px;
 }
 #midLeft {
 	float:left;
-	width:200px;
-}
-#midLeftBottom {
-	float:left;
-	width:550px;
+	width:150px;
 }
 #midMid {
 	float:left;
-	width:400px;
+    width:700px;
+}
+#midMidContent{
+    width:500px;
 }
 #midRight {
 	float:right;
-	width:200px;
+	width:150px;
 }
-
+#midBottom {
+	float:left;
+	width:880px;
+}
+.content {
+	margin:20px;
+}
 #footerOnSpace {
 	clear:both;
 	width:900px;
@@ -69,6 +70,7 @@ div{
 	margin:10px auto;
 }
 
+
 </style>
 
 <div id="top">
@@ -76,37 +78,42 @@ div{
 </div>
 
 <div id="mid" class="clearfix">
-    #mid
-        <div id="midContent">
-            #midContent 隐藏边栏多余内容 overflow:hidden;
-                <div id="midLeft">
-                    #midLeft <br/>padding-bottom:100000px;<br/>margin-bottom:-100000px;(关键)
+        #mid (定义左侧背景)
+
+        <div id="midLeft">
+            #midLeft
+        </div>
+
+        <div id="midMid">
+            #midMid float:left;(右侧背景)
+
+            <div id="midRight">
+                #midRight float:right;
+            </div>
+
+            <div id="midMidContent">
+                #midMidContent float:left;(中间背景)
+
+                <div class="content">
+                    .content
                 </div>
 
-                <div id="midMid">
-                    #midMid
-                    <div class="content">
-                        .content
-                    </div>
-                </div>
-
-                <div id="midRight">
-                    #midRight <br/>padding-bottom:100000px;<br/>margin-bottom:-100000px;(关键)
-                </div>
-
-                <div id="midLeftBottom">
-                    #midLeftBottom 控制左栏下边圆角等样式。
-                </div>
+            </div>
 
         </div>
+
+        <div id="midBottom">
+            #midBottom 控制左栏、右栏下边圆角等样式。
+        </div>
+
 </div>
 
 <div id="footerOnSpace">
     #footerOnSpace
 </div>
 
-<div id="footer" class="clear">
-    #footer"
+<div id="footer">
+    #footer
 </div>
 
 </body>
