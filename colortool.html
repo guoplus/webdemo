@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>调色板</title>
+<meta http-equiv=content-type content="text/html; charset=utf-8">
+<link href="css/lib.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+
+function h(obj,url){
+obj.style.behavior='url(#default#homepage)';
+obj.setHomePage(url);
+}
+
+function $(id){
+  obj=document.getElementById(id);
+  if (obj==null) obj=document.all.id;
+  return obj;
+}
+
+//检查颜色值-Begin
+function isNum16(ch)
+{
+  if (ch >= '0' && ch <= '9')return true;
+  if (ch >= 'A' && ch <= 'F')return true;
+  if (ch >= 'a' && ch <= 'f')return true;
+  return false;
+}
+
+function isAllNum16(str1)
+{//判断颜色值。除第一个字符#外的任一个值是否大于等a,A,0,小于等于f,F,9，否则报错。
+  for (i=1; i<str1.length; i++) {
+    if (!isNum16(str1.charAt(i)))
+    {
+      return false;
+    }
+  }
+  return true;
+}
+
+function checkCol(myColor)
+{//made by jiarry,input color value to change background
+if(myColor!="")
+ {
+  if(myColor.length !=7 || myColor.charAt(0)!="#")
+   {
+   alert("颜色值加#至少7位，请检查！");
+   $("SelColor").value="";
+   }
+  else if(!isAllNum16(myColor))
+  {
+  alert("颜色代码错误，请检查\n 颜色代码示例:#ff6600");
+  $("SelColor").value="";
+  }
+  else{
+   return myColor;
+   }
+  }
+}
+//检查颜色值-END
+var SelRGB = '#808080';
+var DrRGB = "";
+var SelGRAY = '120';
+var SelCol="";
+var baseCol="#808080";
+var bakCol="#ffffff";
+var light="120";
+var RGB=$("RGB");
+var hexch = new Array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F');
+//add innerText to FireFox Begin
+if(!document.all){
+HTMLElement.prototype.__defineGetter__ 
+( 
+"innerText", 
+function () 
+{ 
+var anyString = ""; 
+var childS = this.childNodes; 
+for(var i=0; i<childS.length; i++) 
+{ 
+if(childS[i].nodeType==1) 
+anyString += childS[i].tagName=="br" ? '\n' : childS[i].innerText; 
+else if(childS[i].nodeType==3) 
+anyString += childS[i].nodeValue; 
+} 
+return anyString; 
+} 
+); 
+}
+
+////add innerText to FireFox End
+function ToHex(n)
+{  var h, l;
+  n = Math.round(n);
+  l = n % 16;
+  h = Math.floor((n / 16)) % 16;
+  return (hexch[h] + hexch[l]);
+}
+
+function DoColor(c, l)
+{ var r, g, b;
+  r = '0x' + c.substring(1, 3);
+  g = '0x' + c.substring(3, 5);
+  b = '0x' + c.substring(5, 7);
+  
+  if(l > 120)
+  {
+    l = l - 120;
+    r = (r * (120 - l) + 255 * l) / 120;
+    g = (g * (120 - l) + 255 * l) / 120;
+    b = (b * (120 - l) + 255 * l) / 120;
+  }else
+  {
+    r = (r * l) / 120;
+    g = (g * l) / 120;
+    b = (b * l) / 120;
+  }
+  return '#' + ToHex(r) + ToHex(g) + ToHex(b);
+}
+
+function EndColor()
+{
+  var i;
+  var GrayTable=$("GrayTable");
+  if(DrRGB != SelRGB)
+  {
+    DrRGB = SelRGB;
+   for(i = 0; i <= 30; i ++)
+  GrayTable.rows[i].bgColor = DoColor(SelRGB, 240 - i * 8);
+  }
+  var SelColor=$("SelColor");
+  var RGB=baseCol;
+  var GRAY=light;
+  var ShowColor=$("ShowColor");
+  var ShowColor1=$("ShowColor1");
+  SelColor.value = DoColor(baseCol, light).toLowerCase();;
+  ShowColor.style.backgroundColor = SelColor.value;
+  ShowColor1.style.color = SelColor.value;
+  $("ShowColorbr").style.borderColor = SelColor.value;
+  $("ShowColorbr2").style.borderColor = SelColor.value;
+}
+
+function ctOut(e) {
+  var chs = document.getElementsByName("choose");
+  for(var i=0;i<chs.length;i++)
+  { 
+   if(chs[i].checked)
+   {
+    if(chs[i].value == 2){
+      break;
+    }else{
+      $("SelColorbak").value=bakCol.toLowerCase();
+      $("BackColor").style.backgroundColor=bakCol;
+      return;
+    }
+   }
+  }
+  baseCol=SelRGB;
+  EndColor(baseCol);
+}
+
+function ctClick(e) {
+  var chs = document.getElementsByName("choose");
+  for(var i=0;i<chs.length;i++)
+  { 
+   if(chs[i].checked)
+   {
+    if(chs[i].value == 2){
+      break;
+    }else{
+      bakCol = e.bgColor;
+      $("SelColorbak").value=bakCol.toLowerCase();
+      $("BackColor").style.backgroundColor=bakCol;
+      var GrayTable=$("GrayTable");
+      for(i = 0; i <= 30; i ++)
+      {
+        GrayTable.rows[i].bgColor = DoColor(bakCol, 240 - i * 8);
+      }
+      return;
+    }
+   }
+  }
+  SelRGB = e.bgColor;
+  EndColor();
+}
+
+function ctOver(e){
+  var chs = document.getElementsByName("choose");
+  for(var i=0;i<chs.length;i++)
+  { 
+   if(chs[i].checked)
+   {
+    if(chs[i].value == 2){
+      break;
+    }else{
+      $("SelColorbak").value=e.bgColor.toLowerCase();
+      $("BackColor").style.backgroundColor=e.bgColor;
+      return;
+    }
+   }
+  }
+  baseCol = e.bgColor;
+  EndColor();
+}
+
+function gtOver(e){
+  var chs = document.getElementsByName("choose");
+  for(var i=0;i<chs.length;i++)
+  { 
+   if(chs[i].checked)
+   {
+    if(chs[i].value == 2){
+      break;
+    }else{
+      $("SelColorbak").value=DoColor(bakCol, e.title).toLowerCase();
+      $("BackColor").style.backgroundColor=DoColor(bakCol, e.title);
+      return;
+    }
+   }
+  }
+
+  light = e.title;
+  EndColor();
+}
+
+function gtOut() {
+  var chs = document.getElementsByName("choose");
+  for(var i=0;i<chs.length;i++)
+  { 
+   if(chs[i].checked)
+   {
+    if(chs[i].value == 2){
+      break;
+    }else{
+      $("SelColorbak").value=bakCol.toLowerCase();
+      $("BackColor").style.backgroundColor=bakCol;
+      return;
+    }
+   }
+  }
+
+  light = SelGRAY;
+  EndColor();
+}
+
+function gtClick(e){
+  var chs = document.getElementsByName("choose");
+  for(var i=0;i<chs.length;i++)
+  { 
+   if(chs[i].checked)
+   {
+    if(chs[i].value == 2){
+      break;
+    }else{
+      bakCol = DoColor(bakCol, e.title);
+      $("SelColorbak").value=bakCol.toLowerCase();
+      $("BackColor").style.backgroundColor=bakCol;
+      return;
+    }
+   }
+  }
+
+  SelGRAY = e.title;
+  EndColor();
+}
+
+function inpCol(o){
+  var l=o.value;
+  if (l.length==7){
+    SelRGB = checkCol(o.value);
+    baseCol = SelRGB;
+    EndColor();
+    //$("ShowColor").style.backgroundColor=checkCol(o.value);
+    //$("ShowColor1").style.color=checkCol(o.value);
+  }
+  else if(l.length>7){
+    o.value=l.substring(0,7);
+    alert("颜色代码加#不能超过7位");
+ }
+}
+
+function inpCol2(o){
+  var l=o.value;
+  if (l.length==7){
+    bakCol = checkCol(o.value);
+    $("BackColor").style.backgroundColor=bakCol;
+    var chs = document.getElementsByName("choose");
+    for(var i=0;i<chs.length;i++)
+    { 
+     if(chs[i].checked)
+     {
+      if(chs[i].value == 2){
+        break;
+      }else{
+        var GrayTable=$("GrayTable");
+        for(i = 0; i <= 30; i ++)
+        {
+          GrayTable.rows[i].bgColor = DoColor(bakCol, 240 - i * 8);
+        }
+        return;
+      }
+     }
+    }
+  }
+  else if(l.length>7){
+    o.value=l.substring(0,7);
+    alert("颜色代码加#不能超过7位");
+ }
+}
+
+</script>
+</head>
+
+<body>
+<!-- 调色板，以百度空间的调色板为基础 -->
+<div class="m20">
+<h2>调色板</h2>
+
+<div class="m10">
+<div id="BackColor" class="fl p10">
+<div id="ShowColor1" style="width:450px;" class="fl fs14">
+<p>中国农业大学是国家“211工程” 和“985工程”重点建设的教育部直属高校。中国农业大学是我国现代农业高等教育的起源地，其历史起自于1905年成立的京师大学堂农科大学。1949年9月，由北京大学农学院、清华大学农学院和华北大学农学院合并为北京农业大学。</p>
+<p><strong>国富民殷、强农为本。解民生之多艰，育天下之英才，是我校百年不变的追求。数代农大人情系乡土，忧患苍生，为实现中国人千百年来的温饱和富庶之梦不遗余力，与祖国和人民保持着最紧密的血肉联系，形成了学校特有的勤勉持重、爱国忧民的精神传统和严谨求实、厚德博学的办学传统。</strong></p>
+</div>
+<div class="fl">
+<div id="ShowColor" style="width:150px;height:70px;" class="m10"></div>
+<div id="ShowColorbr" style="width:150px;height:20px;border-top:solid 1px;border-bottom:dashed 1px;" class="m10"></div>
+<div id="ShowColorbr2" style="width:150px;height:20px;border-top:solid 2px;border-bottom:dashed 2px;" class="m10 mt20"></div>
+</div>
+</div>
+<div class="m10 fl">
+<div class="fs16">背景颜色：</div>
+<input type="text" id="SelColorbak" onkeyup="inpCol2(this)" size="10" class="fs16" value="#ffffff" />
+<div class="fs16">元素颜色：</div>
+<input type="text" id="SelColor" onkeyup="inpCol(this)" size="10" class="fs16" value="#ffffff" />
+<div class="fs16">选择：</div>
+<input type="radio" name="choose" class="fs16" value="1" /><span class="fs16">背景颜色</span><br/>
+<input type="radio" name="choose" class="fs16" value="2" checked="checked"/><span class="fs16">元素颜色</span><br/>
+</div>
+</div>
+
+<div class="clear"></div>
+<div class="m10 p0 fl">
+<table id="ColorTable" style="CURSOR:pointer;table-layout: fixed;width:600px;" cellSpacing="1" cellPadding="0" border="0">
+<tbody>
+<script language=JavaScript>
+
+function wc(r, g, b, n)
+{
+  r = ((r * 16 + r) * 3 * (15 - n) + 0x80 * n) / 15;
+  g = ((g * 16 + g) * 3 * (15 - n) + 0x80 * n) / 15;
+  b = ((b * 16 + b) * 3 * (15 - n) + 0x80 * n) / 15;
+  document.write('<td bgcolor=#' + ToHex(r) + ToHex(g) + ToHex(b) + ' height="20" width="20" onmouseover="ctOver(this)" onmouseout="ctOut(this)" onmousedown="ctClick(this)"></td>');
+}
+
+var cnum = new Array(1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0);
+  for(i = 0; i < 16; i ++)
+  {
+     document.write('<tr>');
+     for(j = 0; j < 30; j ++)
+     {
+       n1 = j % 5;
+       n2 = Math.floor(j / 5) * 3;
+       n3 = n2 + 3;
+       wc((cnum[n3] * n1 + cnum[n2] * (5 - n1)),
+         (cnum[n3 + 1] * n1 + cnum[n2 + 1] * (5 - n1)),
+         (cnum[n3 + 2] * n1 + cnum[n2 + 2] * (5 - n1)), i);
+     }
+     document.writeln('</tr>');
+}
+</script>
+</tbody>
+</table>
+</div>
+
+<div class="m10 p0 fl">
+<table id="GrayTable" style="CURSOR: pointer;table-layout: fixed;width:40px;" cellSpacing="0" cellPadding="0" border="0">
+<tbody>
+<script language=JavaScript>
+  for(i = 255; i >= 0; i -= 8.5) {
+   document.write('<tr bgcolor=#' + ToHex(i) + ToHex(i) + ToHex(i) + '><td TITLE=' + Math.floor(i * 16 / 17) + ' height="10" width="40" onmouseover="gtOver(this)" onmouseout="gtOut()" onmousedown="gtClick(this)"></td></tr>');
+}
+</script>
+</tbody>
+</table>
+</div>
+
+</div>
+
+<div style="visibility: hidden">
+基色 : <span id="RGB">#000000</span><br />
+亮度 : <span id="GRAY">120</span><br />
+</div>
+<script type="text/javascript">
+EndColor();
+</script>
+
+<style type="text/css">
+b{
+ font-weight:normal;
+ font-size:9px;
+ display:block;
+ float:left;
+ width:70px;
+ height:22px;
+}
+</style>
+<div class="cb m20">
+<b>#1C1C1C</b>
+<b>#363636</b>
+<b>#4F4F4F</b>
+<b>#696969</b>
+<b>#828282</b>
+<b>#9C9C9C</b>
+<b>#B5B5B5</b>
+<b>#CFCFCF</b>
+<b>#E8E8E8</b>
+<b>#A9A9A9</b>
+<b>#00008B</b>
+<b>#008B8B</b>
+<b>#8B008B</b>
+<b>#8B0000</b>
+<b>#90EE90</b>
+<b>#E54646</b>
+<b>#EE7C6B</b>
+<b>#F5A89A</b>
+<b>#FCDAD5</b>
+<b>#8E1E20</b>
+<b>#B6292B</b>
+<b>#C82E31</b>
+<b>#E33539</b>
+<b>#EB7153</b>
+<b>#F19373</b>
+<b>#F6B297</b>
+<b>#FCD9C4</b>
+<b>#945305</b>
+<b>#BD6B09</b>
+<b>#D0770B</b>
+<b>#EC870E</b>
+<b>#F09C42</b>
+<b>#F5B16D</b>
+<b>#FACE9C</b>
+<b>#FDE2CA</b>
+<b>#976D00</b>
+<b>#C18C00</b>
+<b>#D59B00</b>
+<b>#F1AF00</b>
+<b>#F3C246</b>
+<b>#F9CC76</b>
+<b>#FCE0A6</b>
+<b>#FEEBD0</b>
+<b>#9C9900</b>
+<b>#C7C300</b>
+<b>#DCD800</b>
+<b>#F9F400</b>
+<b>#FCF54C</b>
+<b>#FEF889</b>
+<b>#FFFAB3</b>
+<b>#FFFBD1</b>
+<b>#367517</b>
+<b>#489620</b>
+<b>#50A625</b>
+<b>#5BBD2B</b>
+<b>#83C75D</b>
+<b>#AFD788</b>
+<b>#C8E2B1</b>
+<b>#E6F1D8</b>
+<b>#006241</b>
+<b>#007F54</b>
+<b>#008C5E</b>
+<b>#00A06B</b>
+<b>#00AE72</b>
+<b>#67BF7F</b>
+<b>#98D0B9</b>
+<b>#C9E4D6</b>
+<b>#00676B</b>
+<b>#008489</b>
+<b>#009298</b>
+<b>#00A6AD</b>
+<b>#00B2BF</b>
+<b>#6EC3C9</b>
+<b>#99D1D3</b>
+<b>#CAE5E8</b>
+<b>#103667</b>
+<b>#184785</b>
+<b>#1B4F93</b>
+<b>#205AA7</b>
+<b>#426EB4</b>
+<b>#7388C1</b>
+<b>#94AAD6</b>
+<b>#BFCAE6</b>
+<b>#211551</b>
+<b>#2D1E69</b>
+<b>#322275</b>
+<b>#3A2885</b>
+<b>#511F90</b>
+<b>#635BA2</b>
+<b>#8273B0</b>
+<b>#A095C4</b>
+<b>#38044B</b>
+<b>#490761</b>
+<b>#52096C</b>
+<b>#5D0C7B</b>
+<b>#79378B</b>
+<b>#8C63A4</b>
+<b>#AA87B8</b>
+<b>#C9B5D4</b>
+<b>#64004B</b>
+<b>#780062</b>
+<b>#8F006D</b>
+<b>#A2007C</b>
+<b>#AF4A92</b>
+<b>#C57CAC</b>
+<b>#D2A6C7</b>
+<b>#E8D3E3</b>
+<b>#ECECEC</b>
+<b>#D7D7D7</b>
+<b>#C2C2C2</b>
+<b>#B7B7B7</b>
+<b>#A0A0A0</b>
+<b>#898989</b>
+<b>#707070</b>
+<b>#555555</b>
+<b>#363636</b>
+<b>#000000</b>
+</div>
+<script type="text/javascript">
+var bs = document.getElementsByTagName("b");
+for(var i=0;i<bs.length;i++){
+  bs[i].style.backgroundColor=bs[i].innerHTML;
+}
+</script>
+</body>
+</html>
