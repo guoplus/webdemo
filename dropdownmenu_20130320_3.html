@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>纯CSS的下拉菜单 支持IE6 IE7 Firefox</title>
+
+<style type="text/css">
+* {
+	margin:0;
+	padding:0;
+}
+
+a {
+	text-decoration:none;
+}
+
+.menu {
+	line-height:21px;
+	list-style-type:none;
+	margin-left:0;
+}
+.menu a {
+	display:block;
+	text-align:center;
+}
+
+.menu li {
+	float:left;
+	height:20px;
+	width:80px;
+}
+
+.menu li a:link {
+	color:#000000;
+}
+.menu li a:hover {
+	color:red;
+}
+.menu li ul {
+	background-color:#4C7AAC;
+	color:#FFFFFF;
+	float:left;
+	height:25px;
+	left:-400em;
+	line-height:22px;
+	list-style-type:none;
+	margin:0 auto;
+	padding:0;
+	position:absolute;
+	right:0;
+	width:1003px;
+}
+.menu li ul li {
+	background-color:#4C7AAC;
+	color:#FFFFFF;
+	float:left;
+	width:70px;
+}
+.menu li ul a {
+	color:#FFFFFF;
+	display:block;
+	text-align:center;
+	width:70px;
+}
+.menu li ul a:link {
+	color:#FFFFFF;
+	text-decoration:none;
+}
+.menu li ul a:visited {
+	color:#FFFFFF;
+	text-decoration:none;
+}
+.menu li ul a:hover {
+	color:#FFE718;
+	font-weight:normal;
+	text-decoration:none;
+}
+.menu li:hover ul {
+	left:0;
+}
+.menu li.sfhover ul {
+	left:0;
+}
+#content {
+	clear:left;
+}
+
+</style>
+<script type="text/javascript">
+
+function menuFix() {
+	var sfEls = document.getElementById("nav").getElementsByTagName("li");
+	for (var i=0; i<sfEls.length; i++) {
+		sfEls[i].onmouseover=function() {
+		this.className+=(this.className.length>0? " ": "") + "sfhover";
+		}
+		sfEls[i].onMouseDown=function() {
+		this.className+=(this.className.length>0? " ": "") + "sfhover";
+		}
+		sfEls[i].onMouseUp=function() {
+		this.className+=(this.className.length>0? " ": "") + "sfhover";
+		}
+		sfEls[i].onmouseout=function() {
+		this.className=this.className.replace(new RegExp("( ?|^)sfhover\\b"), "");
+		}
+	}
+}
+
+window.onload=menuFix;
+
+</script>
+
+</head>
+<body>
+
+<ul class="menu">
+    <li class=""><a href="#">首页 </a></li>
+    <li class=""><a href="#">关于我们</a> 
+        <ul style="padding-left:200px; *padding-left:200px; _padding-left:200px;">
+             <div >
+                <li><a href="#">公司概况</a> </li>
+                <li class=""><a href="#">企业文化</a> </li>
+                <li><a href="#">党群建设</a> </li>
+            </div>
+        </ul>
+    </li>
+
+<li class=""><a href="#">
+新闻中心
+</a> 
+<ul>
+<div style="width:1003; height:5px; background-color:#FFFFFF;text-align:center; padding-right:120px; *padding-right:200px;"><img src="../images/jiao.jpg"></div><div>
+<div style=" padding-left:340px; *padding-left:350px; _padding-left:330px;">
+<!--循环：catalog count：50-->
+
+<li><a href="#">公司新闻</a> </li>
+
+<li class=""><a href="#">行业信息</a> </li>
+
+<li><a href="#">媒体聚焦</a> </li>
+
+<li><a href="#">企业告示</a> </li>
+
+<li><a href="#">专题专栏</a> </li>
+
+<li><a href="#">期刊杂志</a> </li>
+
+<li><a href="#">视频资料</a> </li>
+
+<li><a href="#">国资动态</a> </li>
+
+</div></div>
+</ul>
+</li>
+
+<li>
+<a href="#">
+投资者关系
+</a>
+<ul><div style="width:1003; height:5px; background-color:#FFFFFF;text-align:right; padding-right:460px; *padding-right:500px;"><img src="../images/jiao.jpg"></div><div>
+<div style="padding-left:450px; *padding-left:450px; _padding-left:400px;">
+<!--循环：catalog count：50-->
+
+<li><a href="#">股票信息</a> </li>
+
+<li><a href="#">公告/通函</a> </li>
+
+<li><a href="#">财务报告</a> </li>
+
+<li><a href="#">运营数据</a> </li>
+
+<li><a href="#">业绩简报</a> </li>
+
+<li><a href="#">咨询信息</a> </li>
+
+</div></div>
+</ul>
+</li>
+
+<li><a href="#">
+产品与服务
+</a> 
+<ul><div style="width:1003; height:5px; background-color:#FFFFFF;text-align:right; padding-right:360px; *padding-right:400px;"><img src="../images/jiao.jpg"></div><div>
+<div style="padding-left:560px; *padding-left:560px; _padding-left:530px;">
+<!--循环：catalog count：50-->
+
+<li><a href="#">产品世界</a> </li>
+
+<li><a href="#">客户服务</a> </li>
+
+<li><a href="#">研究开发</a> </li>
+
+<li><a href="#">视频资料</a> </li>
+
+</div></div>
+</ul>
+</li>
+
+<li><a href="#">
+人力资源
+</a> 
+<ul><div style="width:1003; height:5px; background-color:#FFFFFF; text-align:right;  padding-right:260px; *padding-right:300px; "><img src="../images/jiao.jpg"></div><div>
+<div style="padding-left:600px; *padding-left:600px; _padding-left:600px; ">
+<!--循环：catalog count：50-->
+
+<li><a href="#">人力简介</a> </li>
+
+<li><a href="#">毕业生招聘</a> </li>
+
+<li><a href="#">教育培训</a> </li>
+
+<li><a href="#">社会招聘</a> </li>
+
+<li><a href="#">常见问题</a> </li>
+
+</div></div>
+</ul></li>
+
+<li><a href="#">
+专题专栏
+</a>
+<ul><div style="width:1003; height:5px; background-color:#FFFFFF; text-align:right;  padding-right:160px; *padding-right:200px; "><img src="../images/jiao.jpg"></div><div>
+<div style="padding-left:780px; *padding-left:780px; _padding-left:780px; ">
+
+<!--循环：catalog count：50-->
+
+<li><a href="#">2011年专题</a> </li>
+
+<li><a href="#">2010年专题</a> </li>
+
+<li><a href="#">2009年专题</a> </li>
+
+</div></div>
+</ul>
+</li>
+
+
+<li><a href="#">
+社会责任
+</a> 
+<ul><div style="width:1003; height:5px; background-color:#FFFFFF; text-align:right;  padding-right:60px; *padding-right:100px; "><img src="../images/jiao.jpg"></div><div>
+<div style="padding-left:780px; *padding-left:780px; _padding-left:780px; ">
+<!--循环：catalog count：50-->
+
+<li><a href="#">航信责任</a> </li>
+
+<li><a href="#">公益行动</a> </li>
+
+<li><a href="#">责任报告</a> </li>
+
+
+</div></div>
+</ul></li>
+
+</ul>
+ 
+</body>
+</html> 
