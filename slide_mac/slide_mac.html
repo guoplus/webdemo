@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>图片切换</title>
+</head>
+<body>
+
+<style type="text/css">
+*{margin:0;padding:0;}
+#page_wrap{width: 900px;}
+
+a {outline: none;}
+a:active {star:expression(this.onFocus=this.blur());}
+
+#gf_slide_wrap{
+    position: relative;
+    width: 100%;
+}
+#gf_slide_wrap .loading{
+    position:absolute;
+    top:30%;
+    left:40%;
+    z-index:1;
+}
+#gf_slide_wrap .prev,
+#gf_slide_wrap .next{
+    position:absolute;
+    z-index:9;
+    top:0;
+    left:10px;
+    cursor:pointer;
+}
+#gf_slide_wrap .next{
+    left:auto;
+    right:10px;
+}
+#gf_slide_wrap .prev a,
+#gf_slide_wrap .next a{
+    display:block;
+    width:250px;
+    height:300px;
+    font:700 53px/58px arial;
+    line-height:300px;
+    color:#fff;
+    text-align:left;
+    text-decoration:none;
+    opacity: 0;
+}
+#gf_slide_wrap .next a{
+    text-align: right;
+}
+#gf_slide_wrap .prev a:hover,
+#gf_slide_wrap .next a:hover{
+    color:#f60;
+    opacity: 1;
+}
+
+#gf_slide_pic{
+    position: relative;
+    z-index:2;
+    height: 340px;
+    width: 100%;
+    overflow: hidden;
+}
+#gf_slide_pic img{
+    border:0;
+}
+
+#gf_slide_text{
+    height:40px;
+    width:600px;
+    overflow: hidden;
+    float: left;
+}
+#gf_slide_text div{
+    width:100%;
+    font-size: 13px;
+}
+#gf_slide_text div span{
+    display: inline-block;
+    margin: 10px;
+    font-weight: bold;
+}
+
+#gf_slide_wrap .share{
+    float:right;
+    width: 150px;
+}
+
+#gf_slide_thumb{
+    clear: both;
+    text-align: center;
+    height: 90px;
+    line-height: 90px;
+    width:100%;
+}
+#gf_slide_thumb img{
+    cursor:pointer;
+    margin:3px;
+    /* Do rounding (native in Opera, Firefox and Safari) */
+    border-radius:25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+}
+
+</style>
+
+<div id="page_wrap">
+
+    <div id="gf_slide_wrap">
+        <div class="loading"><img src="img/loading.gif" alt="请稍候..." /></div>
+        <div class="prev"><a href="javascript:gfsl.prev();">‹</a></div>
+        <div class="next"><a href="javascript:gfsl.next();">›</a></div>
+        <div id="gf_slide_pic"></div>
+        <div id="gf_slide_text"></div>
+        <div id="gf_slide_thumb"></div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+//图片列表对象
+//用后台json数据代替
+var data = [
+    {pic:"img/1.jpg",thumb:"img/t_1.jpg",text:"这是第一张图，第一张图哦，这是第一张图"},
+    {pic:"img/2.jpg",thumb:"img/t_2.jpg",text:"这是第二张图，第二张图哦，这是第二张图"},
+    {pic:"img/3.jpg",thumb:"img/t_3.jpg",text:"这是第三张图，第三张图哦，这是第三张图"},
+    {pic:"img/4.jpg",thumb:"img/t_4.jpg",text:"这是第四张图，第四张图哦，这是第四张图"},
+    {pic:"img/5.jpg",thumb:"img/t_5.jpg",text:"这是第五张图，第五张图哦，这是第五张图"},
+    {pic:"img/6.jpg",thumb:"img/t_6.jpg",text:"这是第六张图，第六张图哦，这是第六张图"},
+    {pic:"img/1.jpg",thumb:"img/t_1.jpg",text:"这是第一张图，第一张图哦，这是第一张图"},
+    {pic:"img/2.jpg",thumb:"img/t_2.jpg",text:"这是第二张图，第二张图哦，这是第二张图"},
+    {pic:"img/3.jpg",thumb:"img/t_3.jpg",text:"这是第三张图，第三张图哦，这是第三张图"},
+    {pic:"img/4.jpg",thumb:"img/t_4.jpg",text:"这是第四张图，第四张图哦，这是第四张图"},
+    {pic:"img/5.jpg",thumb:"img/t_5.jpg",text:"这是第五张图，第五张图哦，这是第五张图"},
+    {pic:"img/3.jpg",thumb:"img/t_3.jpg",text:"这是第三张图，第三张图哦，这是第三张图"},
+    {pic:"img/4.jpg",thumb:"img/t_4.jpg",text:"这是第四张图，第四张图哦，这是第四张图"},
+    {pic:"img/5.jpg",thumb:"img/t_5.jpg",text:"这是第五张图，第五张图哦，这是第五张图"},
+    {pic:"img/6.jpg",thumb:"img/t_6.jpg",text:"这是第六张图，第六张图哦，这是第六张图"},
+    {pic:"img/1.jpg",thumb:"img/t_1.jpg",text:"这是第一张图，第一张图哦，这是第一张图"},
+    {pic:"img/2.jpg",thumb:"img/t_2.jpg",text:"这是第二张图，第二张图哦，这是第二张图"},
+    {pic:"img/3.jpg",thumb:"img/t_3.jpg",text:"这是第三张图，第三张图哦，这是第三张图"},
+    {pic:"img/4.jpg",thumb:"img/t_4.jpg",text:"这是第四张图，第四张图哦，这是第四张图"},
+    {pic:"img/5.jpg",thumb:"img/t_5.jpg",text:"这是第五张图，第五张图哦，这是第五张图"},
+    {pic:"img/6.jpg",thumb:"img/t_6.jpg",text:"这是第六张图，第六张图哦，这是第六张图"},
+    {pic:"img/1.jpg",thumb:"img/t_1.jpg",text:"这是第一张图，第一张图哦，这是第一张图"},
+    {pic:"img/2.jpg",thumb:"img/t_2.jpg",text:"这是第二张图，第二张图哦，这是第二张图"},
+    {pic:"img/3.jpg",thumb:"img/t_3.jpg",text:"这是第三张图，第三张图哦，这是第三张图"},
+    {pic:"img/4.jpg",thumb:"img/t_4.jpg",text:"这是第四张图，第四张图哦，这是第四张图"},
+    {pic:"img/5.jpg",thumb:"img/t_5.jpg",text:"这是第五张图，第五张图哦，这是第五张图"}
+];
+
+//gfsl对象
+var gfsl = gfsl || {};
+
+gfsl._picSum = 0; //图片总数
+gfsl._curNum = 0; //当前
+gfsl._picWrap = {};
+gfsl._thumbWrap = {};
+gfsl._textWrap = {};
+gfsl._thumbWidth = 50;
+gfsl._thumbHeight = 33;
+gfsl._picWidth = 900;
+gfsl._picHeight = 337;
+
+//获取元素相对文档位置
+gfsl.getElPos = function(el) {
+    var ua = navigator.userAgent.toLowerCase();
+    var isOpera = (ua.indexOf('opera') != -1);
+    var isIE = (ua.indexOf('msie') != -1 && !isOpera); // not opera spoof
+    if (el.parentNode === null || el.style.display == 'none') {
+        return false;
+    }
+    var parent = null;
+    var pos = [];
+    var box;
+    if (el.getBoundingClientRect)    //ie  ：经过测试好像目前所有类型的浏览器都实现了这个方法
+    {
+        box = el.getBoundingClientRect();
+        var scrollTop = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
+        var scrollLeft = Math.max(document.documentElement.scrollLeft, document.body.scrollLeft);
+        return {x:box.left + scrollLeft, y:box.top + scrollTop};
+    }
+    else if (document.getBoxObjectFor)    // gecko
+    {
+        box = document.getBoxObjectFor(el);
+        var borderLeft = (el.style.borderLeftWidth) ? parseInt(el.style.borderLeftWidth) : 0;
+        var borderTop = (el.style.borderTopWidth) ? parseInt(el.style.borderTopWidth) : 0;
+        pos = [box.x - borderLeft, box.y - borderTop];
+    }
+    else    // safari & opera
+    {
+        pos = [el.offsetLeft, el.offsetTop];
+        parent = el.offsetParent;
+        if (parent != el) {
+            while (parent) {
+                pos[0] += parent.offsetLeft;
+                pos[1] += parent.offsetTop;
+                parent = parent.offsetParent;
+            }
+        }
+        if (ua.indexOf('opera') != -1 || ( ua.indexOf('safari') != -1 && el.style.position == 'absolute' )) {
+            pos[0] -= document.body.offsetLeft;
+            pos[1] -= document.body.offsetTop;
+        }
+    }
+    if (el.parentNode) {
+        parent = el.parentNode;
+    } else {
+        parent = null;
+    }
+    while (parent && parent.tagName != 'BODY' && parent.tagName != 'HTML') { // account for any scrolled ancestors
+        pos[0] -= parent.scrollLeft;
+        pos[1] -= parent.scrollTop;
+        if (parent.parentNode) {
+            parent = parent.parentNode;
+        } else {
+            parent = null;
+        }
+    }
+    return {x:pos[0], y:pos[1]};
+};
+
+//获取鼠标事件相对文档位置
+gfsl.getEvPos = function(ev) {
+    var x = y = 0,
+            doc = document.documentElement,
+            body = document.body;
+    if(!ev) ev=window.event;
+    if (window.pageYoffset) {//pageYoffset是Netscape特有
+        x = window.pageXOffset;
+        y = window.pageYOffset;
+    }else{
+        x = (doc && doc.scrollLeft || body && body.scrollLeft || 0) - (doc && doc.clientLeft || body && body.clientLeft || 0);
+        y = (doc && doc.scrollTop  || body && body.scrollTop  || 0) - (doc && doc.clientTop  || body && body.clientTop  || 0);
+    }
+    x += ev.clientX;
+    y += ev.clientY;
+    return {'x' : x, 'y' : y};
+};
+
+//初始化img dom对象
+//渲染到网页中
+gfsl.initData = function(picWrapElId,thumbWrapElId,textWrapElId,data,wrapWidth){
+    if(!data){
+        return;
+    }
+    thumbWrap = gfsl._thumbWrap = document.getElementById(thumbWrapElId);
+    picWrap = gfsl._picWrap = document.getElementById(picWrapElId);
+    textWrap = gfsl._textWrap = document.getElementById(textWrapElId);
+    if(!thumbWrap || !picWrap || !textWrap){
+        return;
+    }
+
+    gfsl._picSum = data.length;
+
+    var thumbFrag = document.createDocumentFragment();
+    var picFrag = document.createDocumentFragment();
+    var textFrag = document.createDocumentFragment();
+
+    var ww = (wrapWidth-120)/gfsl._picSum;
+    if(ww < gfsl._thumbWidth){
+        gfsl._thumbWidth = ww-6;
+    }
+    if(gfsl._thumbHeight > gfsl._thumbWidth){
+        gfsl._thumbHeight = gfsl._thumbWidth;
+    }
+
+    for(var i=0;i<data.length;i++){
+        //thumb
+        var tp = document.createElement('img');
+        tp.src = data[i].thumb;
+        tp.width = gfsl._thumbWidth;
+        tp.height = gfsl._thumbHeight;
+        thumbFrag.appendChild(tp);
+        //pic
+        var pp = document.createElement('img');
+        pp.src = 'about:blank;';
+        pp.setAttribute('osrc',data[i].pic);
+        pp.width = gfsl._picWidth;
+        pp.height = gfsl._picHeight;
+        pp.style.display = 'none';
+        picFrag.appendChild(pp);
+        //text
+        var tt = document.createElement('div');
+        var tc = document.createTextNode(data[i].text);
+        var tn = document.createElement('span');
+        var tnc = document.createTextNode(i+1+'/'+data.length);
+        tt.style.display = 'none';
+        tn.appendChild(tnc);
+        tt.appendChild(tn);
+        tt.appendChild(tc);
+        textFrag.appendChild(tt);
+    }
+
+    thumbWrap.appendChild(thumbFrag);
+    picWrap.appendChild(picFrag);
+    textWrap.appendChild(textFrag);
+};
+
+//给img元素上添加hover效果
+//@param imgIndex 悬浮的img序号，从0开始，if(!ev)的时候，有效
+gfsl.overThumb = function(imgIndex){
+    if(!gfsl._thumbWrap){
+        return;
+    }
+
+    var aImg = gfsl._thumbWrap.getElementsByTagName('img');
+
+    var _hover = function(aImg,ex,ey,thumbWidth,thumbHeight){
+        //悬浮效果
+        for(var i=0;i<aImg.length;i++){
+            var ap = gfsl.getElPos(aImg[i]);
+            var a = ex - (ap['x'] + aImg[i].offsetWidth/2);
+            var b = ey - (ap['y'] + aImg[i].offsetHeight/2);
+            var c = Math.sqrt(Math.pow(a,2) + Math.pow(b,2));	//勾股定理求出鼠标到aImg[i]中心距离
+            var spex = 1-c/360;
+            if(spex<0.5){
+                spex = 0.5;
+            }
+
+            var w = spex*thumbWidth*2;
+            var h = spex*thumbHeight*2;
+
+            aImg[i].style.width = w + 'px';
+            aImg[i].style.height = h + 'px';
+
+            //竖直方向位移
+            var oy = (h - thumbHeight)/2;
+            aImg[i].style.marginBottom = '-' + oy + 'px';
+        }
+    }
+
+    if(typeof imgIndex == 'number'){
+        var i = imgIndex;
+
+        if(i >= aImg.length || i<0){
+            return;
+        }
+
+        var ap = gfsl.getElPos(aImg[i]);
+        var ex = (ap['x'] + aImg[i].offsetWidth/2);
+        var ey = (ap['y'] + aImg[i].offsetHeight/2);
+
+        _hover(aImg,ex,ey,gfsl._thumbWidth, gfsl._thumbHeight);
+
+    }
+    else{
+        for(var i=0;i<aImg.length;i++){
+            aImg[i].onmousemove = function(ev){
+                var mp = gfsl.getEvPos(ev);
+                var ex = mp['x'];
+                var ey = mp['y'];
+
+                _hover(aImg,ex,ey,gfsl._thumbWidth, gfsl._thumbHeight);
+            };
+            (function () {
+                var temp = i;//调用时局部变量
+                aImg[i].onclick = function(ev) {
+                    gfsl.updateView(temp);
+                }
+            })();
+        }
+    }
+
+};
+
+gfsl.init = function(picId,thId,textId,data,wrapWidth){
+    gfsl.initData(picId,thId,textId,data,wrapWidth);
+    gfsl.overThumb();
+    gfsl.updateView(0);
+};
+
+gfsl.updateView = function(imgId){
+    //
+    var ii = 0;
+    if(typeof imgId == 'number'){
+        gfsl._curNum = ii = imgId;
+    }
+    else{
+        ii = gfsl._curNum
+    }
+    //thumb
+    gfsl.overThumb(ii);
+
+    //pic
+    var pics = gfsl._picWrap.getElementsByTagName('img');
+    for(var i=0;i<pics.length;i++){
+        if(ii==i){
+            pics[i].style.display = 'block';
+            var src = pics[i].src;
+            if(src.indexOf('about:blank')!=-1){
+                var osrc = pics[i].getAttribute('osrc');
+                pics[i].src = osrc;
+            }
+        }
+        else{
+            pics[i].style.display = 'none';
+        }
+    }
+
+    //text
+    var texts = gfsl._textWrap.getElementsByTagName('div');
+    for(var i=0;i<texts.length;i++){
+        if(ii==i){
+            texts[i].style.display = 'block';
+        }
+        else{
+            texts[i].style.display = 'none';
+        }
+    }
+};
+
+gfsl.prev = function(){
+    if(gfsl._curNum > 0){
+        --gfsl._curNum;
+        gfsl.updateView();
+    }
+};
+
+gfsl.next = function(){
+    if(gfsl._curNum < gfsl._picSum-1){
+        ++gfsl._curNum;
+        gfsl.updateView();
+    }
+}
+
+gfsl.init("gf_slide_pic","gf_slide_thumb","gf_slide_text",data,900);
+
+</script>
+
+</body>
+</html>
