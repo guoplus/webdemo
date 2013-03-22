@@ -18,4 +18,4 @@ function addLoadEvent(func){
 	  func();
 	}
   }
-}/*addLoadEvent() end*/
+}

@@ -290,10 +290,9 @@ function func() {
   new MenuList('menus', 0.9);
 }
 
-addLoadEvent(func);
+window.onload = func;
 </script>
 
-<div id="menubar" class="m20">
 <ul id="menus" class="menus">
 <li class="current-cat"><a title="Home" href="../">All demos</a></li>
 <li class="cat-item cat-item-4"><a href="javascript:;" >.Net</a>
@@ -371,7 +370,6 @@ addLoadEvent(func);
   </ul>
 </li>
 </ul>
-</div>
 
 
 </body>
