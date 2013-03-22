@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>全屏</title>
+<style type="text/css">
+* {
+	margin:0px;
+	padding:0px;
+}
+html, body {
+	height:100%;
+	overflow: hidden;
+}
+html>body {		/*-- for !IE6.0 --*/
+	width: auto;
+	height: auto;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+body {
+	border:8px solid #ffffff;
+	background-color: #ffffff;
+}
+#mainDiv {
+	width: 100%;
+	height: 100%;
+	_padding-left:160px;
+}
+#rightDiv {
+	width: 100%;
+	height: 100%;
+	_padding:100px 0px;
+}
+#mainDiv>#rightDiv {
+	width:auto;
+	position:absolute;
+	left:160px;
+	right:0px;
+}
+#leftDiv {
+	width:156px;
+	height:100%;
+	background-color:#99FF33;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+#centerDiv {
+	width: 100%;
+	height: 100%;
+	background-color:#00CCFF;
+}
+#rightDiv>#centerDiv {
+	height:auto;
+	position:absolute;
+	top:100px;
+	bottom:100px;
+}
+#topDiv{
+	height:96px;
+	width:100%;
+	background-color:#9933FF;
+	position:absolute;
+	top:0px;
+}
+#bottomDiv{
+	height:96px;
+	width:100%;
+	background-color:#FF9900;
+	position:absolute;
+	bottom:0px;
+	_bottom:-1px;	/*-- for IE6.0 --*/
+}
+</style>
+</head>
+<body>
+
+<div id="mainDiv">
+	<div id="leftDiv"></div>
+	<div id="rightDiv">
+		<div id="topDiv"></div>
+		<div id="centerDiv"></div>
+		<div id="bottomDiv"></div>
+	</div>
+</div>
+
+</body>
+</html>
