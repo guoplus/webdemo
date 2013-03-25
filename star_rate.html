@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>星标打分打分</title>
+</head>
+<body>
+
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% Arial, Helvetica, sans-serif , "新宋体";}
+
+.wrap{width:600px;margin:20px auto;height:24px;}
+</style>
+
+<script type="text/javascript">
+var gflib = gflib || {};
+ 
+/**
+ * 为window.onload事件添加方法
+ * window.onload只能执行最后绑定的函数
+ * 此函数提供了一个加载完毕执行任意条函数的解决方案。
+ * eg.addLoadEvent(abc);
+ * http://simon.incutio.com
+ * 09-08-13
+ */
+gflib.ready = function(func){
+    var oldonload = window.onload;
+    if(typeof window.onload != 'function'){
+        window.onload=func;
+    }
+    else{
+        window.onload = function(){
+            oldonload();
+            func();
+        };
+    }
+}
+
+</script>
+
+<!-- starrating_wrap 开始 -->
+
+<style type="text/css">
+ul.starrating{display:block;float:left;width:100px;height:28px;position:relative;background: url('img/star_rate/starrating.gif') top left repeat-x;}
+ul.starrating li{float:left;}
+ul.starrating li a{display:block;width:10px;height:28px;text-indent:-9000px;z-index:20;position:absolute;overflow:hidden;}
+ul.starrating li a:hover{background:url('img/star_rate/starrating.gif') left 35px;z-index:2;left:0;}
+ul.starrating a.star1{left:0px;}
+ul.starrating a.star1:hover{width:10px;}
+ul.starrating a.star2{left:10px;}
+ul.starrating a.star2:hover{width:20px;}
+ul.starrating a.star3{left:20px;}
+ul.starrating a.star3:hover{width:30px;}
+ul.starrating a.star4{left:30px;}
+ul.starrating a.star4:hover{width:40px;}
+ul.starrating a.star5{left:40px;}
+ul.starrating a.star5:hover{width:50px;}
+ul.starrating a.star6{left:50px;}
+ul.starrating a.star6:hover{width:60px;}
+ul.starrating a.star7{left:60px;}
+ul.starrating a.star7:hover{width:70px;}
+ul.starrating a.star8{left:70px;}
+ul.starrating a.star8:hover{width:80px;}
+ul.starrating a.star9{left:80px;}
+ul.starrating a.star9:hover{width:90px;}
+ul.starrating a.star10{left:90px;}
+ul.starrating a.star10:hover{width:100px;}
+#currentrating{background:url('img/star_rate/starrating.gif') left 35px;position:absolute;height:28px;width:0;display:block;text-indent:-9000px;z-index:1;}
+.startratiing_tip{float:left;margin-left:20px;}
+#startratiing_no{color:#f60;font-weight:bold;}
+</style>
+
+<div id="starrating_wrap" class="wrap">
+
+    <ul class="starrating">
+        <li id="currentrating"></li>
+        <li><a r="1" href="javascript:;" class="star1">1</a></li>
+        <li><a r="2" href="javascript:;" class="star2">2</a></li>
+        <li><a r="3" href="javascript:;" class="star3">3</a></li>
+        <li><a r="4" href="javascript:;" class="star4">4</a></li>
+        <li><a r="5" href="javascript:;" class="star5">5</a></li>
+        <li><a r="6" href="javascript:;" class="star6">6</a></li>
+        <li><a r="7" href="javascript:;" class="star7">7</a></li>
+        <li><a r="8" href="javascript:;" class="star8">8</a></li>
+        <li><a r="9" href="javascript:;" class="star9">9</a></li>
+        <li><a r="10" href="javascript:;" class="star10">10</a></li>
+    </ul>
+    <div class="startratiing_tip">
+        <span id="startratiing_no"></span>
+        <span id="startratiing_tip"></span>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+function starratingInit () {
+    var sw = document.getElementById('starrating_wrap');
+    var s = sw.getElementsByTagName('a');
+    var tip = document.getElementById("startratiing_tip");
+    var no = document.getElementById("startratiing_no");
+    var cur = document.getElementById("currentrating");
+    var fentip = new Array("","很差，浪费生命","很差，浪费生命","不喜欢","不喜欢","一般，不妨一看","一般，不妨一看","一般，不妨一看","喜欢，值得推荐","喜欢，值得推荐","非常喜欢，不容错过");
+
+    var curr;
+    for(var i=0,len=s.length;i<len;i++){
+        s[i].index = i+1;
+        s[i].onclick = function(){
+            curr = this.index;
+            starclick();
+        };
+
+        s[i].onmouseover = function(){
+            staron();
+        };
+
+        s[i].onmouseout = function(){
+            starout();
+        };
+    };
+
+    function starout () {
+        var var1 = curr;
+
+        cur.style.width=var1*10+"px";
+    }
+    
+    function staron(){
+        var var1 = curr;
+
+        cur.style.width="0px";
+
+        if (var1>0){
+            no.innerHTML=var1+"分 ";
+            tip.innerHTML=fentip[var1];
+            cur.style.display="block";
+        }
+        else{
+            no.innerHTML="";
+            tip.innerHTML="";
+            cur.style.display="none";
+        }
+    }
+
+    function starclick(){
+        var var1 = curr;
+
+        if (var1>0){
+            no.innerHTML=var1+"分 ";
+            tip.innerHTML=fentip[var1];
+            cur.style.display="block";
+        }
+        else{
+            no.innerHTML="";
+            tip.innerHTML="";
+            cur.style.display="none";
+        }
+
+        cur.style.width=var1*10+"px";
+    }
+
+    //
+    curr = 4;
+    starclick();
+}
+
+gflib.ready(starratingInit);
+
+</script>
+
+<!-- starrating_wrap 结束 -->
+
+<!-- star 开始 -->
+
+<style type="text/css">
+
+#star{position:relative;}
+#star ul,#star span{float:left;display:inline;height:19px;line-height:19px;}
+#star li{float:left;width:24px;cursor:pointer;text-indent:-9999px;background:url(img/star_rate/star.png) no-repeat;}
+#star strong{color:#f60;padding-left:10px;}
+#star li.on{background-position:0 -28px;}
+#star p{position:absolute;top:20px;width:159px;height:60px;display:none;background:url(img/star_rate/icon.gif) no-repeat;padding:7px 10px 0;}
+#star p em{color:#f60;display:block;font-style:normal;}
+
+</style>
+
+<div id="star" class="wrap">
+    <ul>
+        <li><a href="javascript:;">1</a></li>
+        <li><a href="javascript:;">2</a></li>
+        <li><a href="javascript:;">3</a></li>
+        <li><a href="javascript:;">4</a></li>
+        <li><a href="javascript:;">5</a></li>
+    </ul>
+    <span id="star_tip"></span>
+    <p id="star_h"></p>
+</div>
+
+<script type="text/javascript"> 
+function star(){
+
+	var oStar = document.getElementById("star");
+	var aLi = oStar.getElementsByTagName("li");
+	var oUl = oStar.getElementsByTagName("ul")[0];
+	var oSpan = document.getElementById("star_tip");
+	var oP = document.getElementById("star_h");
+	var i = iScore = iStar = 0;
+	var aMsg = [
+				"很不满意|差得太离谱，与卖家描述的严重不符，非常不满",
+				"不满意|部分有破损，与卖家描述的不符，不满意",
+				"一般|质量一般，没有卖家描述的那么好",
+				"满意|质量不错，与卖家描述的基本一致，还是挺满意的",
+				"非常满意|质量非常好，与卖家描述的完全一致，非常满意"
+				]
+	
+	for (i = 1; i <= aLi.length; i++){
+		aLi[i - 1].index = i;
+		
+		//鼠标移过显示分数
+		aLi[i - 1].onmouseover = function (){
+			fnPoint(this.index);
+			//浮动层显示
+			oP.style.display = "block";
+			//计算浮动层位置
+			oP.style.left = oUl.offsetLeft + this.index * this.offsetWidth - 104 + "px";
+			//匹配浮动层文字内容
+			oP.innerHTML = "<em><b>" + this.index + "</b> 分 " + aMsg[this.index - 1].match(/(.+)\|/)[1] + "</em>" + aMsg[this.index - 1].match(/\|(.+)/)[1]
+		};
+		
+		//鼠标离开后恢复上次评分
+		aLi[i - 1].onmouseout = function (){
+			fnPoint();
+			//关闭浮动层
+			oP.style.display = "none"
+		};
+		
+		//点击后进行评分处理
+		aLi[i - 1].onclick = function (){
+			iStar = this.index;
+			oP.style.display = "none";
+			
+		}
+	}
+	
+	//评分处理
+	function fnPoint(iArg){
+		//分数赋值
+		iScore = iArg || iStar;
+		for (i = 0; i < aLi.length; i++) aLi[i].className = i < iScore ? "on" : "";
+        oSpan.innerHTML = "<strong>" + (iScore) + " 分</strong> " + aMsg[iScore - 1].match(/\|(.+)/)[1];
+	}
+	
+    //
+    fnPoint(4);
+};
+
+gflib.ready(star);
+</script>
+
+<!-- star 结束-->
+
+<!-- QuacorGrading 开始-->
+
+<style type="text/css">
+#QuacorGrading input{
+    background:url(img/star_rate/grading.png) no-repeat scroll right center;
+    cursor:pointer;
+    height:30px;
+    width:30px;
+    padding:0;
+    border:0;
+}
+
+#QuacorGrading .quarate{float:left;}
+
+img{vertical-align:middle;}
+
+#QuacorGradingValue{
+    float:left;
+    margin-left:15px;
+    height:30px;
+    line-height:30px;
+    color:#f60;
+    font-weight:bold;
+}
+
+</style>
+
+<div id="QuacorGrading" class="wrap">
+    <div class="quarate">
+        <input type="button" name="1" />
+        <input type="button" name="2" />
+        <input type="button" name="3" />
+        <input type="button" name="4" />
+        <input type="button" name="5" />
+        <input type="button" name="6" />
+        <input type="button" name="7" />
+        <input type="button" name="8" />
+        <input type="button" name="9" />
+        <input type="button" name="10" />
+    </div>
+    <div id="QuacorGradingValue"></div>
+</div>
+
+<script type="text/javascript">
+
+function quacorgrading () {
+    var w = document.getElementById("QuacorGrading");
+    var GradList = w.getElementsByTagName("input");
+    var tip = document.getElementById("QuacorGradingValue");
+    var cur;
+
+    for(var i=0;i < GradList.length;i++){
+        GradList[i].onmouseover = gradon;
+
+        GradList[i].onmouseout = gradout;
+
+        GradList[i].onclick = function(){
+            cur = this.name;
+            gradclick;
+        };
+    }
+
+    function gradon () {
+            for(var Qi=0;Qi<GradList.length;Qi++){
+                GradList[Qi].style.backgroundPosition = 'right center';
+            }
+            for(var Qii=0;Qii<this.name;Qii++){
+                GradList[Qii].style.backgroundPosition = 'left center';
+            }
+            tip.innerHTML = this.name+'分';
+    }
+
+    function gradout () {
+            for(var Qi=0;Qi<GradList.length;Qi++){
+                GradList[Qi].style.backgroundPosition = 'right center';
+            }
+            for(var Qii=0;Qii<cur;Qii++){
+                GradList[Qii].style.backgroundPosition = 'left center';
+            }
+            tip.innerHTML = cur+'分';
+    }
+
+    function gradclick () {
+            for(var Qi=0;Qi<GradList.length;Qi++){
+                GradList[Qi].style.backgroundPosition = 'right center';
+            }
+            for(var Qii=0;Qii<cur;Qii++){
+                GradList[Qii].style.backgroundPosition = 'left center';
+            }
+            tip.innerHTML = cur+'分';
+    }
+
+    //
+    cur = 3;
+    gradclick ();
+}
+
+gflib.ready(quacorgrading);
+</script>
+
+<!-- QuacorGrading 结束-->
+
+
+</body>
+</html>
