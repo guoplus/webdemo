@@ -172,21 +172,23 @@ gflib.ready(starratingInit);
 
 <!-- starrating_wrap 结束 -->
 
-<!-- star 开始 -->
+<!-- 封装star 开始-->
 
 <style type="text/css">
 
-#star{position:relative;}
-#star ul,#star span{float:left;display:inline;height:19px;line-height:19px;}
-#star li{float:left;width:24px;cursor:pointer;text-indent:-9999px;background:url(img/star_rate/star.png) no-repeat;}
-#star strong{color:#f60;padding-left:10px;}
-#star li.on{background-position:0 -28px;}
-#star p{position:absolute;top:20px;width:159px;height:60px;display:none;background:url(img/star_rate/icon.gif) no-repeat;padding:7px 10px 0;}
-#star p em{color:#f60;display:block;font-style:normal;}
+/*星标评分*/
+.star_point{position:relative;}
+.star_point ul,
+.star_point span{float:left;display:inline;height:19px;line-height:19px;}
+.star_point li{float:left;width:24px;cursor:pointer;text-indent:-9999px;background:url(img/star_rate/star.png) no-repeat;z-index:10;}
+.star_point strong{color:#f60;padding-left:10px;}
+.star_point li.on{background-position:0 -28px;}
+.star_point p{position:absolute;top:20px;width:159px;height:60px;display:none;background:url(img/star_rate/icon.gif) no-repeat;padding:7px 10px 0;z-index:11;}
+.star_point p em{color:#f60;display:block;font-style:normal;}
 
 </style>
 
-<div id="star" class="wrap">
+<div id="star00" class="star_point wrap">
     <ul>
         <li><a href="javascript:;">1</a></li>
         <li><a href="javascript:;">2</a></li>
@@ -194,72 +196,141 @@ gflib.ready(starratingInit);
         <li><a href="javascript:;">4</a></li>
         <li><a href="javascript:;">5</a></li>
     </ul>
-    <span id="star_tip"></span>
-    <p id="star_h"></p>
+    <span></span>
+    <p></p>
 </div>
 
-<script type="text/javascript"> 
-function star(){
+<div id="star01" class="star_point wrap">
+    <ul>
+        <li><a href="javascript:;">1</a></li>
+        <li><a href="javascript:;">2</a></li>
+        <li><a href="javascript:;">3</a></li>
+        <li><a href="javascript:;">4</a></li>
+        <li><a href="javascript:;">5</a></li>
+    </ul>
+    <span></span>
+    <p></p>
+</div>
 
-	var oStar = document.getElementById("star");
-	var aLi = oStar.getElementsByTagName("li");
-	var oUl = oStar.getElementsByTagName("ul")[0];
-	var oSpan = document.getElementById("star_tip");
-	var oP = document.getElementById("star_h");
-	var i = iScore = iStar = 0;
-	var aMsg = [
-				"很不满意|差得太离谱，与卖家描述的严重不符，非常不满",
-				"不满意|部分有破损，与卖家描述的不符，不满意",
-				"一般|质量一般，没有卖家描述的那么好",
-				"满意|质量不错，与卖家描述的基本一致，还是挺满意的",
-				"非常满意|质量非常好，与卖家描述的完全一致，非常满意"
-				]
-	
-	for (i = 1; i <= aLi.length; i++){
-		aLi[i - 1].index = i;
-		
-		//鼠标移过显示分数
-		aLi[i - 1].onmouseover = function (){
-			fnPoint(this.index);
-			//浮动层显示
-			oP.style.display = "block";
-			//计算浮动层位置
-			oP.style.left = oUl.offsetLeft + this.index * this.offsetWidth - 104 + "px";
-			//匹配浮动层文字内容
-			oP.innerHTML = "<em><b>" + this.index + "</b> 分 " + aMsg[this.index - 1].match(/(.+)\|/)[1] + "</em>" + aMsg[this.index - 1].match(/\|(.+)/)[1]
-		};
-		
-		//鼠标离开后恢复上次评分
-		aLi[i - 1].onmouseout = function (){
-			fnPoint();
-			//关闭浮动层
-			oP.style.display = "none"
-		};
-		
-		//点击后进行评分处理
-		aLi[i - 1].onclick = function (){
-			iStar = this.index;
-			oP.style.display = "none";
-			
-		}
-	}
-	
-	//评分处理
-	function fnPoint(iArg){
-		//分数赋值
-		iScore = iArg || iStar;
-		for (i = 0; i < aLi.length; i++) aLi[i].className = i < iScore ? "on" : "";
-        oSpan.innerHTML = "<strong>" + (iScore) + " 分</strong> " + aMsg[iScore - 1].match(/\|(.+)/)[1];
-	}
-	
-    //
-    fnPoint(4);
+<script type="text/javascript">
+
+var starlib = starlib || {};
+
+// 初始化
+// @d 评分的id或者dom元素
+starlib.init = function(d){
+
+    var that = {
+        oStar : null,
+        aLi : null,
+        oUl : null,
+        oSpan : null,
+        oP : null,
+        iScore : 0,
+        iStar : 0,
+        aMsg : null,
+        // 显示
+        // @p 评分
+        show: function(p){
+
+            if(!this.aLi || !this.oSpan){
+                return;
+            }
+
+            this.iScore = p || this.iStar;
+            
+            //alert(this.iScore);
+
+            for (var i = 0; i < this.aLi.length; i++){
+                if(i < this.iScore){
+                    this.aLi[i].className = "on";
+                }
+                else{
+                    this.aLi[i].className = "";
+                }
+            }
+            
+            var s = '';
+            if(this.aMsg && this.iScore>0){
+                //s = this.aMsg[this.iScore- 1].match(/(.+)\|/)[1];
+                s = this.aMsg[this.iScore- 1];
+            }
+
+            this.oSpan.innerHTML = "<strong>" + (this.iScore) + " 分</strong> " + s;
+        }
+    };// that end
+
+    if(typeof (d) == 'string'){
+        that.oStar = document.getElementById(d);
+    }
+    else{
+        that.oStar = d;
+    }
+    
+    that.aLi = that.oStar.getElementsByTagName("li");
+    that.oUl = that.oStar.getElementsByTagName("ul")[0];
+    that.oSpan = that.oStar.getElementsByTagName("span")[0];
+    that.oP = that.oStar.getElementsByTagName("p")[0];
+    that.iScore = that.iStar = 0;
+    that.aMsg = [
+            "很不满意",
+            "不满意",
+            "一般",
+            "满意",
+            "非常满意"
+    ];
+
+    // 添加事件
+    for (var i = 1; i <= that.aLi.length; i++){
+        that.aLi[i - 1].index = i;
+ 
+        //鼠标移过显示分数
+        that.aLi[i - 1].onmouseover = function (){
+            that.show(this.index);
+            //浮动层显示
+            that.oP.style.display = "block";
+            //计算浮动层位置
+            that.oP.style.left = that.oUl.offsetLeft + this.index * this.offsetWidth - 104 + "px";
+
+            var s = '';
+            if(that.aMsg && this.index>0){
+                //s = that.aMsg[this.index - 1].match(/(.+)\|/)[1];
+                s = that.aMsg[this.index - 1];
+            }
+
+            //匹配浮动层文字内容
+            that.oP.innerHTML = "<em><b>" + this.index + "</b> 分 " + s + "</em>";
+        };
+ 
+        //鼠标离开后恢复上次评分
+        that.aLi[i - 1].onmouseout = function (){
+            that.show();
+            //
+            that.oP.style.display = "none";
+        };
+ 
+        //点击后进行评分处理
+        that.aLi[i - 1].onclick = function (){
+            that.iStar = this.index;
+            //
+            that.oP.style.display = "none";
+        };
+    }
+
+    return that;
 };
 
-gflib.ready(star);
+function fengStar () {
+    var s00 = starlib.init('star00');
+    s00.show(4);
+    var s01 = starlib.init('star01');
+    s01.show(3);
+}
+
+gflib.ready(fengStar);
 </script>
 
-<!-- star 结束-->
+<!-- 封装star 结束-->
 
 <!-- QuacorGrading 开始-->
 
