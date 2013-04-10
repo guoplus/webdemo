@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>星标打分打分</title>
+</head>
+<body>
+
+<style type="text/css">
+
+.star_rate{position:relative;clear: both;}
+.star_rate ul,
+.star_rate ul li,
+.star_rate p{margin: 0;padding:0}
+.star_rate ul,
+.star_rate .tip,
+.star_rate .title{float:left;display:inline;height:19px;line-height:19px;}
+.star_rate ul{margin-left: 10px;height: 25px;}
+.star_rate li{list-style-type:none;float:left;width:24px;cursor:pointer;text-indent:-9999px;
+    background:url(star.png) no-repeat;z-index:10;}
+.star_rate strong{color:#f60;padding-left:10px;}
+.star_rate li.on{background-position:0 -28px;}
+.star_rate .tip_h{position:absolute;top:20px;width:80px;display:none;
+    background-color:#fff;border:1px solid #ccc;padding:7px;z-index:11;}
+.star_rate .tip_h em{color:#f60;display:block;font-style:normal;}
+
+</style>
+
+<script type="text/javascript" src="star_rate.js"></script>
+
+<div id="star_id"></div>
+<div style="clear:both"></div><hr>
+<div id="star_id2"></div>
+
+<script type="text/javascript">
+
+    var data = [{id:"id1",title:"服务态度",tip:"很不满意::不满意::一般::满意::非常满意"},
+        {id:"id2",title:"完成质量",tip:"很不满意::不满意::一般::满意::非常满意"},
+        {id:"id3",title:"完成时限",tip:"很不满意::不满意::一般::满意::非常满意"}];
+
+    var s = star_rate.init('star_id',data);
+
+    var s1 = star_rate.init('star_id2',data);
+
+    function sf(ins){
+        alert(ins.aItem[0]['score']);
+    }
+
+    s1.setCallback({act:"set",func:sf});
+</script>
+
+</body>
+</html>

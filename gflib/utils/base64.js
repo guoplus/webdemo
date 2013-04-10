@@ -1,4 +1,4 @@
-var base64 = base64 | {};
+var base64 = window.base64 | {};
 
 base64.utf16to8 = function(str) {
     var out, i, len, c;
