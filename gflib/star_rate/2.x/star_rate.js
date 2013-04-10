@@ -145,18 +145,16 @@ star_rate.init = function(sWrapId,aItem){
                 //
                 var d = document.createElement('div');
                 d.className = "star_rate";
-                d.innerHTML = "<div class=\"star_point\">"
-                    +"    <span class=\"title\">"+aItem[i]['title']+"</span>"
-                    +"    <ul>"
-                    +"        <li><a href=\"javascript:;\">1</a></li>"
-                    +"        <li><a href=\"javascript:;\">2</a></li>"
-                    +"        <li><a href=\"javascript:;\">3</a></li>"
-                    +"        <li><a href=\"javascript:;\">4</a></li>"
-                    +"        <li><a href=\"javascript:;\">5</a></li>"
-                    +"    </ul>"
-                    +"    <span class=\"tip\"></span>"
-                    +"    <p class=\"tip_h\"></p>"
-                    +"</div>";
+                d.innerHTML = "<span class=\"title\">"+aItem[i]['title']+"</span>"
+                    +"<ul>"
+                    +"    <li><a href=\"javascript:;\">1</a></li>"
+                    +"    <li><a href=\"javascript:;\">2</a></li>"
+                    +"    <li><a href=\"javascript:;\">3</a></li>"
+                    +"    <li><a href=\"javascript:;\">4</a></li>"
+                    +"    <li><a href=\"javascript:;\">5</a></li>"
+                    +"</ul>"
+                    +"<span class=\"tip\"></span>"
+                    +"<p class=\"tip_h\"></p>";
                 df.appendChild(d);
                 this.aWrap.push(d);
             }
