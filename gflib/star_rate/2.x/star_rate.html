@@ -40,13 +40,23 @@
 
     var s = star_rate.init('star_id',data);
 
-    var s1 = star_rate.init('star_id2',data);
+    var sq = star_rate.init('star_id2',data);
 
-    function sf(ins){
-        alert(ins.aItem[0]['score']);
+    function saf(ins,aItem){
+        alert('set_after: '+aItem[0]['id']+'->'+aItem[0]['score']);
     }
 
-    s1.setCallback({act:"set",func:sf});
+    function sab(ins,aItem){
+        alert('set_before: '+aItem[0]['id']+'->'+aItem[0]['score']);
+    }
+
+    sq.setCallback({set_after:saf,set_before:sab});
+    sq.set([{id:"id1",score:3}]);
+
+    var a = {disable:true};
+    sq.setAttr(a);
+
+    sq.set([{id:"id2",score:4}]);
 </script>
 
 </body>

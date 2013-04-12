@@ -96,6 +96,18 @@ star_rate.init = function(sWrapId,aItem){
         oCallback : null,
 
         /**
+         * 属性。
+         *
+         * @type Object
+         * @field
+         * @example
+         * oAttr['disable'] = false;
+         */
+        oAttr : {
+            disable : false
+        },
+
+        /**
          * 返回dom对象
          *
          * @param {String|Object} soD dom元素id或者dom元素对象
@@ -224,6 +236,11 @@ star_rate.init = function(sWrapId,aItem){
 
                     // 鼠标移过显示分数
                     aLi[i].onmouseover = function (){
+                        //
+                        if(!_ins._acl('mouseover')){
+                            return;
+                        }
+
                         // 显示
                         var oS = {id:this.sId,score:this.score};
                         var aS = [oS];
@@ -236,6 +253,11 @@ star_rate.init = function(sWrapId,aItem){
 
                     // 鼠标离开后恢复上次评分
                     aLi[i].onmouseout = function (){
+                        //
+                        if(!_ins._acl('mouseout')){
+                            return;
+                        }
+
                         // 显示
                         _ins.show();
                         // 隐藏浮动层
@@ -244,6 +266,11 @@ star_rate.init = function(sWrapId,aItem){
 
                     // 点击后进行评分处理
                     aLi[i].onclick = function (){
+                        //
+                        if(!_ins._acl('click')){
+                            return;
+                        }
+
                         // 设置
                         var oS = {id:this.sId,score:this.score};
                         var aS = [oS];
@@ -268,6 +295,12 @@ star_rate.init = function(sWrapId,aItem){
          */
         set : function(aItem){
             var _ins = this;
+
+            // 回调
+            if(_ins.oCallback && _ins.oCallback['set_before']){
+                _ins.oCallback['set_before'](_ins,aItem);
+            }
+
             if(!aItem){
                 return;
             }
@@ -292,9 +325,11 @@ star_rate.init = function(sWrapId,aItem){
                 }
             }
 
+            _ins.show(aItem);
+
             // 回调
-            if(_ins.oCallback && _ins.oCallback['set']){
-                _ins.oCallback['set'](_ins);
+            if(_ins.oCallback && _ins.oCallback['set_after']){
+                _ins.oCallback['set_after'](_ins,aItem);
             }
         },
 
@@ -372,16 +407,16 @@ star_rate.init = function(sWrapId,aItem){
 
                 // 浮动层
                 var s = '';
-                if(aTip){
+                if(aTip) {
                     s = aTip[iScore-1];
                 }
                 oP.innerHTML = "<em><b>" + iScore + "</b> 分 " + s + "</em>";
 
                 // 提示
-                if(iScore>0){
+                if(iScore>0) {
                     oSpan.innerHTML = "<strong>" + (iScore) + " 分</strong> " + s;
-                }
-                else{
+
+                } else {
                     oSpan.innerHTML = "";
                 }
             }
@@ -394,22 +429,92 @@ star_rate.init = function(sWrapId,aItem){
          * @function
          * @param {Object} oFunc
          * @example
-         * function do_action(ins){
-         *     //参数ins是打分组件的实例对象
-         * }
-         * var cb = {act:"set",func:do_action};
+         * function func(ins,aItem){}
+         * var cb = {set_after:func};
          * ins.setCallback(cb);
+         *
+         * 允许的参数值如下：
+         * key :: 回调 参数
+         * ================
+         * set_after :: ins实例,set参数
+         * set_before :: ins实例,set参数
          */
         setCallback : function(oFunc){
-            var act = oFunc['act'];
-            if(!act || (typeof act != 'string')){
+            if(!oFunc){
                 return;
             }
+
             this.oCallback = this.oCallback || {};
 
-            this.oCallback[act] = oFunc['func'];
-        }
+            for (var v in oFunc) {
+                this.oCallback[v] = oFunc[v];
+            }
 
+        },
+
+        /**
+         * 设置属性。
+         *
+         * @function
+         * @param {Object} oAttr
+         * @example
+         *
+         * var a = {disable:false};
+         * ins.setAttr(a);
+         *
+         * 允许的参数值如下：
+         * key :: 描述 :: value 可选值 :: 默认值
+         * ===================================
+         * disable :: 是否允许打分 :: true或false :: false
+         *
+         */
+        setAttr : function(oAttr){
+            if(!oAttr){
+                return;
+            }
+
+            for (var v in oAttr) {
+                this.oAttr[v] = oAttr[v];
+            }
+        },
+
+        /**
+         * 判断是否可操作。
+         *
+         * @function
+         * @private
+         * @param {String} sAct
+         * @returns {Boolean} 默认false
+         * @example
+         *
+         * if(acl('mouseover')){
+         *     // ...
+         * }
+         *
+         * 可选参数如下：
+         * mouseover
+         * click
+         * mouseout
+         */
+        _acl : function(sAct){
+            var re = false;
+
+            if(sAct=='mouseover') {
+                if(!this.oAttr['disable']){
+                    re = true;
+                }
+            } else if(sAct=='click') {
+                if(!this.oAttr['disable']){
+                    re = true;
+                }
+            } else if (sAct=='mouseout') {
+                if(!this.oAttr['disable']){
+                    re = true;
+                }
+            }
+
+            return re;
+        }
     };
 
     ins._init(sWrapId, aItem);

@@ -281,6 +281,16 @@ ul.inheritsList
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
+								star_rate.init-ins.<b><a href="../symbols/star_rate.init-ins.html#.oAttr">oAttr</a></b>
+								</div>
+								<div class="description">属性。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
 								star_rate.init-ins.<b><a href="../symbols/star_rate.init-ins.html#.oCallback">oCallback</a></b>
 								</div>
 								<div class="description">回调函数。</div>
@@ -320,6 +330,15 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;private&gt; &lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont">star_rate.init-ins.<b><a href="../symbols/star_rate.init-ins.html#._acl">_acl</a></b>(sAct)
+								</div>
+								<div class="description">判断是否可操作。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;private&gt; &lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont">star_rate.init-ins.<b><a href="../symbols/star_rate.init-ins.html#._genDom">_genDom</a></b>(aItem)
 								</div>
 								<div class="description">生成星标打分dom对象</div>
@@ -341,6 +360,15 @@ ul.inheritsList
 								<div class="fixedFont">star_rate.init-ins.<b><a href="../symbols/star_rate.init-ins.html#.set">set</a></b>(aItem)
 								</div>
 								<div class="description">设置分数。</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">star_rate.init-ins.<b><a href="../symbols/star_rate.init-ins.html#.setAttr">setAttr</a></b>(oAttr)
+								</div>
+								<div class="description">设置属性。</div>
 							</td>
 						</tr>
 					
@@ -459,6 +487,32 @@ ul.inheritsList
 
 					<hr />
 				
+					<a name=".oAttr"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Object}</span>
+					<span class="light">star_rate.init-ins.</span><b>oAttr</b>
+					
+					</div>
+					<div class="description">
+						属性。
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">oAttr['disable'] = false;</pre>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
 					<a name=".oCallback"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -532,6 +586,53 @@ ul.inheritsList
 							<dt class="heading">Returns:</dt>
 							
 								<dd><span class="light fixedFont">{Object}</span> dom元素对象</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="._acl"> </a>
+					<div class="fixedFont">&lt;private&gt; &lt;static&gt; 
+					
+					<span class="light">{Boolean}</span>
+					<span class="light">star_rate.init-ins.</span><b>_acl</b>(sAct)
+					
+					</div>
+					<div class="description">
+						判断是否可操作。
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">if(acl('mouseover')){    // ...}可选参数如下：mouseoverclickmouseout</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>sAct</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Boolean}</span> 默认false</dd>
 							
 							</dl>
 						
@@ -679,6 +780,46 @@ ul.inheritsList
 
 					<hr />
 				
+					<a name=".setAttr"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">star_rate.init-ins.</span><b>setAttr</b>(oAttr)
+					
+					</div>
+					<div class="description">
+						设置属性。
+						
+						
+					</div>
+					
+					
+					
+					<pre class="code">var a = {disable:false};ins.setAttr(a);允许的参数值如下：key :: 描述 :: value 可选值 :: 默认值===================================disable :: 是否允许打分 :: true或false :: false</pre>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Object}</span> <b>oAttr</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
 					<a name=".setCallback"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -694,7 +835,7 @@ ul.inheritsList
 					
 					
 					
-					<pre class="code">function do_action(ins){    //参数ins是打分组件的实例对象}var cb = {act:"set",func:do_action};ins.setCallback(cb);</pre>
+					<pre class="code">function func(ins,aItem){}var cb = {set_after:func};ins.setCallback(cb);允许的参数值如下：key :: 回调 参数================set_after :: ins实例,set参数set_before :: ins实例,set参数</pre>
 					
 					
 					
@@ -771,7 +912,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Wed Apr 10 2013 16:55:25 GMT+0800 (CST)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Fri Apr 12 2013 17:38:03 GMT+0800 (CST)
 		</div>
 	</body>
 </html>
