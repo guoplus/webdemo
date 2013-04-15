@@ -403,130 +403,134 @@
 <span class='line'>396</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>397</span> 
 <span class='line'>398</span> </span><span class="WHIT">                </span><span class="COMM">// 星星</span><span class="WHIT">
-<span class='line'>399</span> </span><span class="WHIT">                </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">si</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">si</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">aLi.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">si</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>400</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">si</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">iScore</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>401</span> </span><span class="WHIT">                        </span><span class="NAME">aLi</span><span class="PUNC">[</span><span class="NAME">si</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">className</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"on"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>402</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>403</span> </span><span class="WHIT">                    </span><span class="KEYW">else</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>404</span> </span><span class="WHIT">                        </span><span class="NAME">aLi</span><span class="PUNC">[</span><span class="NAME">si</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">className</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>405</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>406</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>407</span> 
-<span class='line'>408</span> </span><span class="WHIT">                </span><span class="COMM">// 浮动层</span><span class="WHIT">
-<span class='line'>409</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>410</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">aTip</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>411</span> </span><span class="WHIT">                    </span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">aTip</span><span class="PUNC">[</span><span class="NAME">iScore</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>412</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>413</span> </span><span class="WHIT">                </span><span class="NAME">oP.innerHTML</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&lt;em>&lt;b>"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">iScore</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"&lt;/b> 分 "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"&lt;/em>"</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>414</span> 
-<span class='line'>415</span> </span><span class="WHIT">                </span><span class="COMM">// 提示</span><span class="WHIT">
-<span class='line'>416</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">iScore</span><span class="PUNC">></span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>417</span> </span><span class="WHIT">                    </span><span class="NAME">oSpan.innerHTML</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&lt;strong>"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">iScore</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">" 分&lt;/strong> "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>399</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">cln</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'on'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>400</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">iScore</span><span class="PUNC">&lt;</span><span class="NUMB">3</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>401</span> </span><span class="WHIT">                    </span><span class="NAME">cln</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">'sad'</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>402</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>403</span> </span><span class="WHIT">                </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">si</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">si</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">aLi.length</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">si</span><span class="PUNC">++</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>404</span> </span><span class="WHIT">                    </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">si</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">iScore</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>405</span> </span><span class="WHIT">                        </span><span class="NAME">aLi</span><span class="PUNC">[</span><span class="NAME">si</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">className</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">cln</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>406</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>407</span> </span><span class="WHIT">                    </span><span class="KEYW">else</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>408</span> </span><span class="WHIT">                        </span><span class="NAME">aLi</span><span class="PUNC">[</span><span class="NAME">si</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">className</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>409</span> </span><span class="WHIT">                    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>410</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>411</span> 
+<span class='line'>412</span> </span><span class="WHIT">                </span><span class="COMM">// 浮动层</span><span class="WHIT">
+<span class='line'>413</span> </span><span class="WHIT">                </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">''</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>414</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">aTip</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>415</span> </span><span class="WHIT">                    </span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">aTip</span><span class="PUNC">[</span><span class="NAME">iScore</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>416</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>417</span> </span><span class="WHIT">                </span><span class="NAME">oP.innerHTML</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&lt;em>&lt;b>"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">iScore</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"&lt;/b> 分 "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">s</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">"&lt;/em>"</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>418</span> 
-<span class='line'>419</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>420</span> </span><span class="WHIT">                    </span><span class="NAME">oSpan.innerHTML</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>421</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>422</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>423</span> 
-<span class='line'>424</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>425</span> 
-<span class='line'>426</span> </span><span class="WHIT">        </span><span class="COMM">/**
-<span class='line'>427</span>          * 设置回调函数。
-<span class='line'>428</span>          *
-<span class='line'>429</span>          * @function
-<span class='line'>430</span>          * @param {Object} oFunc
-<span class='line'>431</span>          * @example
-<span class='line'>432</span>          * function func(ins,aItem){}
-<span class='line'>433</span>          * var cb = {set_after:func};
-<span class='line'>434</span>          * ins.setCallback(cb);
-<span class='line'>435</span>          *
-<span class='line'>436</span>          * 允许的参数值如下：
-<span class='line'>437</span>          * key :: 回调 参数
-<span class='line'>438</span>          * ================
-<span class='line'>439</span>          * set_after :: ins实例,set参数
-<span class='line'>440</span>          * set_before :: ins实例,set参数
-<span class='line'>441</span>          */</span><span class="WHIT">
-<span class='line'>442</span> </span><span class="WHIT">        </span><span class="NAME">setCallback</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">oFunc</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>443</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">oFunc</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>444</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>445</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>446</span> 
-<span class='line'>447</span> </span><span class="WHIT">            </span><span class="NAME">this.oCallback</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.oCallback</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>448</span> 
-<span class='line'>449</span> </span><span class="WHIT">            </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">v</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">oFunc</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>450</span> </span><span class="WHIT">                </span><span class="NAME">this.oCallback</span><span class="PUNC">[</span><span class="NAME">v</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">oFunc</span><span class="PUNC">[</span><span class="NAME">v</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>451</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>419</span> </span><span class="WHIT">                </span><span class="COMM">// 提示</span><span class="WHIT">
+<span class='line'>420</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">iScore</span><span class="PUNC">></span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>421</span> </span><span class="WHIT">                    </span><span class="NAME">oSpan.innerHTML</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">"&lt;strong>"</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">iScore</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="STRN">" 分&lt;/strong> "</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">s</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>422</span> 
+<span class='line'>423</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>424</span> </span><span class="WHIT">                    </span><span class="NAME">oSpan.innerHTML</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="STRN">""</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>425</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>426</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>427</span> 
+<span class='line'>428</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>429</span> 
+<span class='line'>430</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>431</span>          * 设置回调函数。
+<span class='line'>432</span>          *
+<span class='line'>433</span>          * @function
+<span class='line'>434</span>          * @param {Object} oFunc
+<span class='line'>435</span>          * @example
+<span class='line'>436</span>          * function func(ins,aItem){}
+<span class='line'>437</span>          * var cb = {set_after:func};
+<span class='line'>438</span>          * ins.setCallback(cb);
+<span class='line'>439</span>          *
+<span class='line'>440</span>          * 允许的参数值如下：
+<span class='line'>441</span>          * key :: 回调 参数
+<span class='line'>442</span>          * ================
+<span class='line'>443</span>          * set_after :: ins实例,set参数
+<span class='line'>444</span>          * set_before :: ins实例,set参数
+<span class='line'>445</span>          */</span><span class="WHIT">
+<span class='line'>446</span> </span><span class="WHIT">        </span><span class="NAME">setCallback</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">oFunc</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>447</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">oFunc</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>448</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>449</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>450</span> 
+<span class='line'>451</span> </span><span class="WHIT">            </span><span class="NAME">this.oCallback</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.oCallback</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>452</span> 
-<span class='line'>453</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>454</span> 
-<span class='line'>455</span> </span><span class="WHIT">        </span><span class="COMM">/**
-<span class='line'>456</span>          * 设置属性。
-<span class='line'>457</span>          *
-<span class='line'>458</span>          * @function
-<span class='line'>459</span>          * @param {Object} oAttr
-<span class='line'>460</span>          * @example
+<span class='line'>453</span> </span><span class="WHIT">            </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">v</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">oFunc</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>454</span> </span><span class="WHIT">                </span><span class="NAME">this.oCallback</span><span class="PUNC">[</span><span class="NAME">v</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">oFunc</span><span class="PUNC">[</span><span class="NAME">v</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>455</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>456</span> 
+<span class='line'>457</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>458</span> 
+<span class='line'>459</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>460</span>          * 设置属性。
 <span class='line'>461</span>          *
-<span class='line'>462</span>          * var a = {disable:false};
-<span class='line'>463</span>          * ins.setAttr(a);
-<span class='line'>464</span>          *
-<span class='line'>465</span>          * 允许的参数值如下：
-<span class='line'>466</span>          * key :: 描述 :: value 可选值 :: 默认值
-<span class='line'>467</span>          * ===================================
-<span class='line'>468</span>          * disable :: 是否允许打分 :: true或false :: false
-<span class='line'>469</span>          *
-<span class='line'>470</span>          */</span><span class="WHIT">
-<span class='line'>471</span> </span><span class="WHIT">        </span><span class="NAME">setAttr</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">oAttr</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>472</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">oAttr</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>473</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>474</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>475</span> 
-<span class='line'>476</span> </span><span class="WHIT">            </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">v</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">oAttr</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>477</span> </span><span class="WHIT">                </span><span class="NAME">this.oAttr</span><span class="PUNC">[</span><span class="NAME">v</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">oAttr</span><span class="PUNC">[</span><span class="NAME">v</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>462</span>          * @function
+<span class='line'>463</span>          * @param {Object} oAttr
+<span class='line'>464</span>          * @example
+<span class='line'>465</span>          *
+<span class='line'>466</span>          * var a = {disable:false};
+<span class='line'>467</span>          * ins.setAttr(a);
+<span class='line'>468</span>          *
+<span class='line'>469</span>          * 允许的参数值如下：
+<span class='line'>470</span>          * key :: 描述 :: value 可选值 :: 默认值
+<span class='line'>471</span>          * ===================================
+<span class='line'>472</span>          * disable :: 是否允许打分 :: true或false :: false
+<span class='line'>473</span>          *
+<span class='line'>474</span>          */</span><span class="WHIT">
+<span class='line'>475</span> </span><span class="WHIT">        </span><span class="NAME">setAttr</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">oAttr</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>476</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">oAttr</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>477</span> </span><span class="WHIT">                </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>478</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>479</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>480</span> 
-<span class='line'>481</span> </span><span class="WHIT">        </span><span class="COMM">/**
-<span class='line'>482</span>          * 判断是否可操作。
-<span class='line'>483</span>          *
-<span class='line'>484</span>          * @function
-<span class='line'>485</span>          * @private
-<span class='line'>486</span>          * @param {String} sAct
-<span class='line'>487</span>          * @returns {Boolean} 默认false
-<span class='line'>488</span>          * @example
-<span class='line'>489</span>          *
-<span class='line'>490</span>          * if(acl('mouseover')){
-<span class='line'>491</span>          *     // ...
-<span class='line'>492</span>          * }
+<span class='line'>479</span> 
+<span class='line'>480</span> </span><span class="WHIT">            </span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">v</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">oAttr</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>481</span> </span><span class="WHIT">                </span><span class="NAME">this.oAttr</span><span class="PUNC">[</span><span class="NAME">v</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">oAttr</span><span class="PUNC">[</span><span class="NAME">v</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>482</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>483</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>484</span> 
+<span class='line'>485</span> </span><span class="WHIT">        </span><span class="COMM">/**
+<span class='line'>486</span>          * 判断是否可操作。
+<span class='line'>487</span>          *
+<span class='line'>488</span>          * @function
+<span class='line'>489</span>          * @private
+<span class='line'>490</span>          * @param {String} sAct
+<span class='line'>491</span>          * @returns {Boolean} 默认false
+<span class='line'>492</span>          * @example
 <span class='line'>493</span>          *
-<span class='line'>494</span>          * 可选参数如下：
-<span class='line'>495</span>          * mouseover
-<span class='line'>496</span>          * click
-<span class='line'>497</span>          * mouseout
-<span class='line'>498</span>          */</span><span class="WHIT">
-<span class='line'>499</span> </span><span class="WHIT">        </span><span class="NAME">_acl</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sAct</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>500</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">re</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>501</span> 
-<span class='line'>502</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">sAct</span><span class="PUNC">==</span><span class="STRN">'mouseover'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>503</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.oAttr</span><span class="PUNC">[</span><span class="STRN">'disable'</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>504</span> </span><span class="WHIT">                    </span><span class="NAME">re</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>505</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>506</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">sAct</span><span class="PUNC">==</span><span class="STRN">'click'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>494</span>          * if(acl('mouseover')){
+<span class='line'>495</span>          *     // ...
+<span class='line'>496</span>          * }
+<span class='line'>497</span>          *
+<span class='line'>498</span>          * 可选参数如下：
+<span class='line'>499</span>          * mouseover
+<span class='line'>500</span>          * click
+<span class='line'>501</span>          * mouseout
+<span class='line'>502</span>          */</span><span class="WHIT">
+<span class='line'>503</span> </span><span class="WHIT">        </span><span class="NAME">_acl</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">sAct</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>504</span> </span><span class="WHIT">            </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">re</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>505</span> 
+<span class='line'>506</span> </span><span class="WHIT">            </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">sAct</span><span class="PUNC">==</span><span class="STRN">'mouseover'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>507</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.oAttr</span><span class="PUNC">[</span><span class="STRN">'disable'</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>508</span> </span><span class="WHIT">                    </span><span class="NAME">re</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>509</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>510</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">sAct</span><span class="PUNC">==</span><span class="STRN">'mouseout'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>510</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="NAME">sAct</span><span class="PUNC">==</span><span class="STRN">'click'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>511</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.oAttr</span><span class="PUNC">[</span><span class="STRN">'disable'</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>512</span> </span><span class="WHIT">                    </span><span class="NAME">re</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>513</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>514</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>515</span> 
-<span class='line'>516</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">re</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>517</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>518</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>514</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">sAct</span><span class="PUNC">==</span><span class="STRN">'mouseout'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>515</span> </span><span class="WHIT">                </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">this.oAttr</span><span class="PUNC">[</span><span class="STRN">'disable'</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>516</span> </span><span class="WHIT">                    </span><span class="NAME">re</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>517</span> </span><span class="WHIT">                </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>518</span> </span><span class="WHIT">            </span><span class="PUNC">}</span><span class="WHIT">
 <span class='line'>519</span> 
-<span class='line'>520</span> </span><span class="WHIT">    </span><span class="NAME">ins._init</span><span class="PUNC">(</span><span class="NAME">sWrapId</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">aItem</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>521</span> 
-<span class='line'>522</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ins</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>523</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>524</span> 
-<span class='line'>525</span> </span></pre></body></html>
+<span class='line'>520</span> </span><span class="WHIT">            </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">re</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>521</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>522</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>523</span> 
+<span class='line'>524</span> </span><span class="WHIT">    </span><span class="NAME">ins._init</span><span class="PUNC">(</span><span class="NAME">sWrapId</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">aItem</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>525</span> 
+<span class='line'>526</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">ins</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>527</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>528</span> 
+<span class='line'>529</span> </span></pre></body></html>

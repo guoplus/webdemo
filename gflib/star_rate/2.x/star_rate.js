@@ -396,9 +396,13 @@ star_rate.init = function(sWrapId,aItem){
                 }
 
                 // 星星
+                var cln = 'on';
+                if(iScore<3){
+                    cln = 'sad';
+                }
                 for (var si = 0; si < aLi.length; si++){
                     if(si < iScore){
-                        aLi[si].className = "on";
+                        aLi[si].className = cln;
                     }
                     else{
                         aLi[si].className = "";
